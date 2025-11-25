@@ -21,7 +21,8 @@ import {
   Plus,
   Navigation,
   Calendar,
-  Scan
+  Scan,
+  ChevronDown
 } from 'lucide-react';
 import { AppRoute } from '../types';
 
@@ -30,6 +31,7 @@ const HomeScreen: React.FC = () => {
   const [hasNotification, setHasNotification] = useState(true);
   const [showUsageModal, setShowUsageModal] = useState(false);
   const [autoOrder, setAutoOrder] = useState(false);
+  const [expandedRoutineStep, setExpandedRoutineStep] = useState<number | null>(0);
 
   // Pack Usage Mock Data
   const totalVolume = 75; // ml
@@ -54,11 +56,17 @@ const HomeScreen: React.FC = () => {
     }
   };
 
+  const routineSteps = [
+    { step: '01', title: 'Cleanse', name: 'Coconut Shampoo', desc: 'Soft Cleanse', price: '₹349', img: 'https://images.unsplash.com/photo-1631729371254-42c2a89ddf0d?q=80&w=400&auto=format&fit=crop' },
+    { step: '02', title: 'Treat', name: 'Hair Mask', desc: 'Deep Condition', price: '₹550', img: 'https://images.unsplash.com/photo-1556228552-603be3301d31?q=80&w=400&auto=format&fit=crop' },
+    { step: '03', title: 'Boost', name: 'Scalp Serum', desc: 'Root Strength', price: '₹450', img: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?q=80&w=400&auto=format&fit=crop' },
+  ];
+
   return (
     <div className="flex flex-col min-h-full pb-24 relative bg-[#FDFBFF]">
       
       {/* NEW BOLD HEADER */}
-      <div className="bg-plum-deep pt-12 pb-24 rounded-b-[50px] relative overflow-hidden z-0 animate-fade-in shadow-2xl">
+      <div className="bg-plum-deep pt-12 pb-32 rounded-b-[50px] relative overflow-hidden z-0 animate-fade-in shadow-2xl">
         {/* Background Patterns - ANIMATED */}
         <div className="absolute top-0 left-0 w-[200%] h-[200%] opacity-10 animate-pan" 
              style={{ backgroundImage: 'radial-gradient(circle, white 2px, transparent 2.5px)', backgroundSize: '30px 30px' }}>
@@ -92,54 +100,78 @@ const HomeScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Hero Product Section - CIRCULAR LAYOUT */}
-      <div className="px-6 -mt-20 mb-8 relative z-10 animate-slide-up flex flex-col items-center text-center" style={{ animationDelay: '0.1s' }}>
+      {/* Hero Product Section - CIRCULAR LAYOUT WITH SIDE ICONS */}
+      <div className="px-4 -mt-24 mb-8 relative z-10 animate-slide-up flex flex-col items-center text-center" style={{ animationDelay: '0.1s' }}>
         
-        {/* Circular Image Container */}
-        <div className="relative w-56 h-56 mb-4">
-             {/* Decorative Rings */}
-             <div className="absolute inset-0 rounded-full border-[6px] border-white shadow-2xl z-20"></div>
-             <div className="absolute -inset-2 rounded-full border-2 border-plum-light/50 animate-pulse-slow z-10"></div>
-             
-             {/* Image */}
-             <div className="w-full h-full rounded-full bg-white overflow-hidden relative z-20 flex items-center justify-center p-2">
-                 <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-50"></div>
-                 <img 
-                   src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=800&auto=format&fit=crop" 
-                   alt="Coconut Hair Serum" 
-                   className="w-full h-full object-contain transform scale-110 hover:scale-125 transition-transform duration-500 drop-shadow-xl" 
-                 />
+        <div className="flex items-center justify-between w-full mb-6 max-w-[400px]">
+             {/* LEFT: Tracking Icon */}
+             <button 
+                onClick={() => navigate(AppRoute.JOURNEY)}
+                className="flex flex-col items-center gap-2 group"
+             >
+                 <div className="w-14 h-14 bg-white rounded-2xl shadow-xl border-2 border-white/50 flex items-center justify-center text-plum-primary transition-transform group-hover:scale-110 group-active:scale-95">
+                     <Navigation size={26} strokeWidth={2.5} className="fill-plum-light/50" />
+                 </div>
+                 <span className="text-sm font-black text-white uppercase tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">Track</span>
+             </button>
+
+             {/* CENTER: Circular Image Container */}
+             <div className="relative w-48 h-48 mx-2">
+                  {/* Decorative Rings */}
+                  <div className="absolute inset-0 rounded-full border-[6px] border-white shadow-2xl z-20"></div>
+                  <div className="absolute -inset-2 rounded-full border-2 border-plum-light/50 animate-pulse-slow z-10"></div>
+                  
+                  {/* Image */}
+                  <div className="w-full h-full rounded-full bg-white overflow-hidden relative z-20 flex items-center justify-center p-2">
+                      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white opacity-50"></div>
+                      <img 
+                        src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=800&auto=format&fit=crop" 
+                        alt="Coconut Hair Serum" 
+                        className="w-full h-full object-contain transform scale-110 hover:scale-125 transition-transform duration-500 drop-shadow-xl" 
+                      />
+                  </div>
+
+                  {/* Verified Badge */}
+                  <div className="absolute bottom-4 right-2 z-30 bg-white rounded-full p-1.5 shadow-lg border border-gray-100">
+                      <div className="bg-green-100 p-1.5 rounded-full">
+                          <CheckCircle size={16} className="text-green-600 fill-current" />
+                      </div>
+                  </div>
              </div>
 
-             {/* Verified Badge */}
-             <div className="absolute bottom-4 right-2 z-30 bg-white rounded-full p-1.5 shadow-lg border border-gray-100">
-                <div className="bg-green-100 p-1.5 rounded-full">
-                    <CheckCircle size={16} className="text-green-600 fill-current" />
-                </div>
-             </div>
+             {/* RIGHT: AR Scan Icon */}
+             <button 
+                onClick={() => navigate(AppRoute.AR_SCAN)}
+                className="flex flex-col items-center gap-2 group"
+             >
+                 <div className="w-14 h-14 bg-white rounded-2xl shadow-xl border-2 border-white/50 flex items-center justify-center text-plum-primary transition-transform group-hover:scale-110 group-active:scale-95">
+                     <Scan size={26} strokeWidth={2.5} />
+                 </div>
+                 <span className="text-sm font-black text-white uppercase tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">AR View</span>
+             </button>
         </div>
 
-        {/* Product Title */}
-        <div className="bg-white/80 backdrop-blur-md p-5 rounded-3xl shadow-lg border border-white max-w-[90%] mx-auto">
+        {/* Product Title Card - FULL WIDTH */}
+        <div className="bg-white/90 backdrop-blur-md p-6 rounded-[32px] shadow-xl border border-white w-full">
              <h3 className="text-2xl font-black text-gray-900 leading-tight mb-2 tracking-tight">
                Coconut Squalane<br/><span className="text-plum-primary">Nutri-Shine Serum</span>
              </h3>
-             <p className="text-xs text-gray-500 font-extrabold uppercase tracking-widest mb-4">75ml • Batch #PLM2023</p>
+             <p className="text-xs text-gray-500 font-extrabold uppercase tracking-widest mb-5">75ml • Batch #PLM2023</p>
 
-             <div className="flex gap-2 justify-center">
+             <div className="flex gap-2 justify-center w-full">
                   <a 
                     href="https://plumgoodness.com/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-white bg-plum-primary px-5 py-2.5 rounded-xl shadow-lg shadow-plum-primary/30 hover:bg-plum-deep transition-all active:scale-95 tracking-wide uppercase"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 text-[10px] font-extrabold text-white bg-plum-primary px-5 py-3.5 rounded-xl shadow-lg shadow-plum-primary/30 hover:bg-plum-deep transition-all active:scale-95 tracking-wide uppercase"
                   >
                     View Website <ExternalLink size={12} strokeWidth={3} />
                   </a>
                   <button
                     onClick={handleShare}
-                    className="p-2.5 flex items-center justify-center bg-gray-50 rounded-xl text-plum-primary border border-gray-100 hover:bg-plum-light/50 transition-all active:scale-95 shadow-sm"
+                    className="w-12 flex items-center justify-center bg-gray-50 rounded-xl text-plum-primary border border-gray-100 hover:bg-plum-light/50 transition-all active:scale-95 shadow-sm"
                   >
-                    <Share2 size={18} strokeWidth={2.5} />
+                    <Share2 size={20} strokeWidth={2.5} />
                   </button>
               </div>
         </div>
@@ -151,7 +183,7 @@ const HomeScreen: React.FC = () => {
           { icon: ShieldCheck, label: 'Authentic', path: AppRoute.AUTHENTICITY, color: 'text-green-600', bg: 'bg-green-50' },
           { icon: HelpCircle, label: 'Usage', path: AppRoute.INFO, color: 'text-blue-600', bg: 'bg-blue-50' },
           { icon: Gift, label: 'Rewards', path: AppRoute.REWARDS, color: 'text-orange-600', bg: 'bg-orange-50' },
-          { icon: Star, label: 'Review', path: AppRoute.REVIEW, color: 'text-yellow-600', bg: 'bg-yellow-50' },
+          { icon: Star, label: 'Reviews', path: AppRoute.REVIEW, color: 'text-yellow-600', bg: 'bg-yellow-50' },
         ].map((item, idx) => (
           <button 
             key={idx}
@@ -163,7 +195,7 @@ const HomeScreen: React.FC = () => {
                  <item.icon size={24} strokeWidth={2.5} />
               </div>
             </div>
-            <span className="text-[10px] font-extrabold text-gray-700 tracking-tight">{item.label}</span>
+            <span className="text-[11px] font-black text-plum-deep uppercase tracking-wide">{item.label}</span>
           </button>
         ))}
       </div>
@@ -244,76 +276,9 @@ const HomeScreen: React.FC = () => {
          </div>
       </div>
 
-      {/* AR EXPERIENCE BANNER */}
-      <div className="px-6 mb-10 animate-slide-up" style={{ animationDelay: '0.35s' }}>
-          <div 
-            onClick={() => navigate(AppRoute.AR_SCAN)}
-            className="relative bg-gradient-to-r from-[#2E0249] to-[#5C0099] rounded-[32px] p-7 overflow-hidden shadow-xl shadow-plum-primary/20 cursor-pointer group"
-          >
-              {/* Decor */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl transform translate-x-10 -translate-y-10"></div>
-              
-              <div className="flex items-center justify-between relative z-10">
-                  <div className="max-w-[60%]">
-                      <div className="inline-flex items-center gap-1 bg-white/20 backdrop-blur-md px-2.5 py-1 rounded-lg text-[10px] font-black text-white uppercase tracking-widest mb-3 border border-white/10">
-                          <Scan size={12} strokeWidth={3} /> AR Experience
-                      </div>
-                      <h3 className="text-xl font-black text-white leading-tight mb-2 tracking-tight">Meet Coco in AR!</h3>
-                      <p className="text-xs text-white/80 font-bold leading-relaxed mb-5">
-                          Scan your bottle to unlock a 3D message from our mascot.
-                      </p>
-                      <div className="bg-white text-plum-deep text-xs font-extrabold px-5 py-3 rounded-xl inline-flex items-center gap-2 shadow-lg group-hover:scale-105 transition-transform uppercase tracking-wide">
-                          Start Scanning <ArrowRight size={14} strokeWidth={3} />
-                      </div>
-                  </div>
-                  
-                  {/* Mascot Placeholder Image */}
-                  <div className="absolute right-[-15px] bottom-[-25px] w-36 h-36 rotate-12">
-                       <img 
-                         src="https://cdn-icons-png.flaticon.com/512/4193/4193290.png" 
-                         alt="Mascot" 
-                         className="w-full h-full object-contain drop-shadow-2xl animate-bounce-subtle"
-                       />
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      {/* Track Your Product - UPDATED IMAGE & ALIGNMENT */}
-      <div className="px-6 mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-        <div 
-          onClick={() => navigate(AppRoute.JOURNEY)}
-          className="group relative h-52 rounded-[32px] overflow-hidden shadow-xl shadow-plum-primary/10 cursor-pointer border border-white w-full"
-        >
-          {/* Background Image - Global Map / Connections Theme */}
-          <img 
-            src="https://images.unsplash.com/photo-1494412651409-ae1e0954332e?q=80&w=800&auto=format&fit=crop" 
-            alt="Global Logistics Map" 
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 saturate-0 opacity-80 group-hover:saturate-50"
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-plum-deep/95 via-plum-deep/80 to-transparent"></div>
-          
-          <div className="absolute inset-0 p-8 flex flex-col justify-center text-white">
-            <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-4 shadow-inner border border-white/20">
-              <Navigation size={24} className="text-white fill-white/20" strokeWidth={2.5} />
-            </div>
-            
-            <h3 className="text-2xl font-black leading-none mb-3 tracking-tight">Track Your<br/>Product</h3>
-            <p className="text-xs text-white/80 font-bold mb-6 max-w-[65%] leading-relaxed">
-                Trace the complete journey from Kerala to your doorstep.
-            </p>
-            
-            <div className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest bg-white text-plum-deep px-6 py-3 rounded-xl w-fit shadow-lg transform transition-transform group-hover:scale-105">
-               <span>Start Tracking</span> <ArrowRight size={12} strokeWidth={3} />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Recommended Routine - Redesigned */}
-      <div className="mb-8 animate-slide-up" style={{ animationDelay: '0.5s' }}>
-        <div className="px-6 flex justify-between items-center mb-5">
+      {/* Recommended Routine - Accordion Redesign */}
+      <div className="mb-8 px-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+        <div className="flex justify-between items-center mb-5">
           <div>
              <h3 className="font-extrabold text-gray-900 text-xl tracking-tight">Curated Routine</h3>
              <p className="text-xs text-gray-500 font-bold mt-0.5 uppercase tracking-wide">Complete the look</p>
@@ -323,33 +288,48 @@ const HomeScreen: React.FC = () => {
           </div>
         </div>
         
-        <div className="flex gap-3 overflow-x-auto px-6 pb-8 no-scrollbar snap-x">
-          {[
-            { step: '01', title: 'Cleanse', name: 'Coconut Shampoo', desc: 'Soft Cleanse', price: '₹349', img: 'https://images.unsplash.com/photo-1631729371254-42c2a89ddf0d?q=80&w=400&auto=format&fit=crop' },
-            { step: '02', title: 'Treat', name: 'Hair Mask', desc: 'Deep Condition', price: '₹550', img: 'https://images.unsplash.com/photo-1556228552-603be3301d31?q=80&w=400&auto=format&fit=crop' },
-            { step: '03', title: 'Boost', name: 'Scalp Serum', desc: 'Root Strength', price: '₹450', img: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?q=80&w=400&auto=format&fit=crop' },
-          ].map((item, idx) => (
-            <div key={idx} className="snap-center min-w-[180px] bg-white p-3 rounded-[24px] border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] flex flex-col relative group">
-              
-              <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-sm px-2.5 py-1.5 rounded-lg text-[10px] font-black text-gray-900 shadow-sm border border-gray-100 uppercase tracking-wide">
-                 Step {item.step}
-              </div>
-
-              <div className="w-full aspect-[4/3] bg-gray-50 rounded-2xl mb-3 overflow-hidden relative">
-                <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              </div>
-              
-              <div className="px-1">
-                <span className="text-[10px] font-extrabold text-plum-primary uppercase tracking-wider mb-1 block">{item.title}</span>
-                <h4 className="text-sm font-black text-gray-900 mb-0.5 truncate tracking-tight">{item.name}</h4>
-                <p className="text-[10px] text-gray-500 font-bold mb-4">{item.desc}</p>
-                
-                <button className="w-full py-3 bg-gray-50 hover:bg-plum-primary hover:text-white text-gray-800 rounded-xl text-xs font-extrabold uppercase tracking-wide transition-all flex items-center justify-center gap-2 border border-gray-200 hover:border-plum-primary">
-                   Add <Plus size={12} strokeWidth={3} />
+        <div className="space-y-3">
+          {routineSteps.map((item, idx) => {
+            const isExpanded = expandedRoutineStep === idx;
+            return (
+              <div key={idx} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden transition-all duration-300">
+                <button
+                    onClick={() => setExpandedRoutineStep(isExpanded ? null : idx)}
+                    className="w-full flex items-center justify-between p-4 bg-gray-50/50 hover:bg-gray-50 transition-colors"
+                >
+                    <div className="flex items-center gap-3">
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black border-2 transition-colors ${isExpanded ? 'bg-plum-primary text-white border-plum-primary' : 'bg-white text-gray-400 border-gray-200'}`}>
+                            {item.step}
+                        </div>
+                        <div className="text-left">
+                            <span className="text-[10px] font-black uppercase tracking-wider text-plum-primary block mb-0.5">{item.title}</span>
+                            <span className="text-sm font-bold text-gray-900">{item.name}</span>
+                        </div>
+                    </div>
+                    <div className={`transition-transform duration-300 text-gray-400 ${isExpanded ? 'rotate-180 text-plum-primary' : ''}`}>
+                        <ChevronDown size={20} strokeWidth={2.5} />
+                    </div>
                 </button>
+
+                <div 
+                    className={`transition-all duration-300 ease-in-out overflow-hidden bg-white ${isExpanded ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}
+                >
+                    <div className="p-4 pt-0 border-t border-gray-100 mt-2 flex gap-4 items-center">
+                        <img src={item.img} alt={item.name} className="w-16 h-16 rounded-xl object-cover shadow-sm" />
+                        <div className="flex-1">
+                            <p className="text-xs text-gray-500 font-bold mb-3">{item.desc}</p>
+                            <div className="flex justify-between items-center">
+                                <span className="font-black text-gray-900">{item.price}</span>
+                                <button className="bg-plum-primary text-white text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-wide flex items-center gap-1 shadow-md shadow-plum-primary/20 hover:bg-plum-deep">
+                                    Add <Plus size={10} strokeWidth={4} />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

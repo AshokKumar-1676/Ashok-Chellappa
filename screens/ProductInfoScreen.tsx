@@ -14,17 +14,17 @@ const ingredientsData = [
     {
         name: 'Coconut Oil',
         desc: 'An ingredient rich in Vitamin E and fatty acids, helps nourish hair and additionally restores hair moisture.',
-        image: 'https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=80&w=200&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=80&w=400&auto=format&fit=crop'
     },
     {
         name: 'Squalane',
         desc: 'Derived from olives and found naturally in sebum, it controls frizz, smoothens hair, and forms a protective film to maintain moisture.',
-        image: 'https://images.unsplash.com/photo-1474979266404-7cadd259c366?q=80&w=200&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1474979266404-7cadd259c366?q=80&w=400&auto=format&fit=crop'
     },
     {
         name: 'Almond Oil',
         desc: 'An emollient which conditions and adds shine to the hair and also helps prevent split ends.',
-        image: 'https://images.unsplash.com/photo-1623326164223-1d02c8172972?q=80&w=200&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1623326164223-1d02c8172972?q=80&w=400&auto=format&fit=crop'
     }
 ];
 
@@ -94,8 +94,8 @@ const ProductInfoScreen: React.FC = () => {
                 { label: 'Vegan', icon: Heart },
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)]">
-                  <div className="text-plum-primary mb-2"><item.icon size={24} strokeWidth={1.5} /></div>
-                  <span className="text-xs font-bold text-gray-800">{item.label}</span>
+                  <div className="text-plum-primary mb-2"><item.icon size={24} strokeWidth={2} /></div>
+                  <span className="text-xs font-extrabold text-gray-800">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -103,8 +103,8 @@ const ProductInfoScreen: React.FC = () => {
             {/* Description */}
             <div>
               <h3 className="font-extrabold text-gray-900 mb-3 text-lg">Why you'll love it</h3>
-              <p className="text-sm text-gray-600 leading-relaxed font-medium">
-                A lightweight, pre-wash hair oil or post-wash serum that smoothens hair and adds a glossy shine. Infused with <span className="text-plum-primary font-bold">squalane</span>, <span className="text-plum-primary font-bold">coconut oil</span>, and <span className="text-plum-primary font-bold">almond oil</span> to nourish strands without weighing them down.
+              <p className="text-sm text-gray-600 leading-relaxed font-bold">
+                A lightweight, pre-wash hair oil or post-wash serum that smoothens hair and adds a glossy shine. Infused with <span className="text-plum-primary font-black">squalane</span>, <span className="text-plum-primary font-black">coconut oil</span>, and <span className="text-plum-primary font-black">almond oil</span> to nourish strands without weighing them down.
               </p>
             </div>
 
@@ -121,7 +121,7 @@ const ProductInfoScreen: React.FC = () => {
                     </div>
                     <div>
                         <h4 className="font-black text-plum-deep text-sm mb-1">{ing.name}</h4>
-                        <p className="text-xs text-gray-600 leading-relaxed font-medium">
+                        <p className="text-xs text-gray-600 leading-relaxed font-bold">
                             {ing.desc}
                         </p>
                     </div>
@@ -153,7 +153,7 @@ const ProductInfoScreen: React.FC = () => {
                <div className="relative z-10 w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
                    <PlayCircle size={32} className="fill-white" />
                </div>
-               <span className="relative z-10 text-xs mt-3 font-bold uppercase tracking-wider">Watch Tutorial</span>
+               <span className="relative z-10 text-xs mt-3 font-black uppercase tracking-wider">Watch Tutorial</span>
             </div>
 
             {/* Horizontal Scroll Steps */}
@@ -195,7 +195,7 @@ const ProductInfoScreen: React.FC = () => {
                     </div>
                     <div className="p-5 flex flex-col grow">
                       <h4 className="font-extrabold text-gray-900 text-sm mb-1">{step.title}</h4>
-                      <p className="text-xs text-gray-500 leading-relaxed font-medium">{step.desc}</p>
+                      <p className="text-xs text-gray-500 leading-relaxed font-bold">{step.desc}</p>
                     </div>
                   </div>
                 ))}

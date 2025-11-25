@@ -1,4 +1,4 @@
-import { MapPin, Package, Truck, CheckCircle, Factory, ShieldCheck, Droplet, Sun, Leaf } from 'lucide-react';
+import { MapPin, Package, Truck, CheckCircle, Factory, ShieldCheck, Leaf, Droplet, Sun } from 'lucide-react';
 import { TimelineEvent, ProductAttribute } from './types';
 
 export const PLUM_COLORS = {
@@ -17,15 +17,15 @@ export const PRODUCT_DETAILS: ProductAttribute[] = [
 
 export const JOURNEY_STEPS: TimelineEvent[] = [
   {
-    title: 'Sourced with Love',
+    title: 'Origin Source',
     date: 'Sep 20, 2023',
-    description: 'Premium coconuts sourced from organic farms in Kerala.',
+    description: 'Premium coconuts harvested from organic farms in Kerala.',
     icon: Leaf,
     location: 'Kerala, India',
     image: 'https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=80&w=800&auto=format&fit=crop'
   },
   {
-    title: 'Manufactured',
+    title: 'Crafting',
     date: 'Oct 15, 2023',
     description: 'Processed and bottled at our GMP certified Mumbai facility.',
     icon: Factory,
@@ -33,17 +33,17 @@ export const JOURNEY_STEPS: TimelineEvent[] = [
     image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop'
   },
   {
-    title: 'Quality Checked',
+    title: 'Quality Check',
     date: 'Oct 16, 2023',
-    description: 'Passed 14-point quality & safety inspection.',
+    description: 'Passed 14-point safety & purity inspection.',
     icon: ShieldCheck,
     location: 'Lab #4',
     image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop'
   },
   {
-    title: 'Dispatched',
+    title: 'Logistics',
     date: 'Oct 20, 2023',
-    description: 'Left the central warehouse for distribution.',
+    description: 'Dispatched from central warehouse.',
     icon: Truck,
     location: 'Central Hub',
     image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop'
@@ -51,7 +51,7 @@ export const JOURNEY_STEPS: TimelineEvent[] = [
   {
     title: 'Delivered',
     date: 'Nov 02, 2023',
-    description: 'Reached your hands safe and sound!',
+    description: 'Successfully delivered to your location.',
     icon: CheckCircle,
     location: 'Your Location',
     image: 'https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=800&auto=format&fit=crop'

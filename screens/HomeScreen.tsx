@@ -15,12 +15,11 @@ import {
   Box,
   Droplet,
   AlertTriangle,
-  Sparkles,
   Map as MapIcon,
-  ShoppingBag,
   Share2,
   Layers,
-  Plus
+  Plus,
+  Navigation
 } from 'lucide-react';
 import { AppRoute } from '../types';
 
@@ -75,7 +74,7 @@ const HomeScreen: React.FC = () => {
              <h1 className="text-3xl font-black text-white leading-tight tracking-tight">
                Hello, <span className="text-peach">Beautiful!</span>
              </h1>
-             <p className="text-plum-light/80 text-sm font-semibold mt-1">Welcome to your smart experience</p>
+             <p className="text-plum-light/80 text-sm font-bold mt-1 tracking-wide">Welcome to your smart experience</p>
           </div>
 
           <button 
@@ -106,14 +105,14 @@ const HomeScreen: React.FC = () => {
               <h3 className="text-xl font-black text-gray-900 mb-1 leading-tight">
                 Coconut Squalane<br/>Nutri-Shine
               </h3>
-              <p className="text-xs text-gray-500 mb-5 font-bold uppercase tracking-wide">Serum • 75ml</p>
+              <p className="text-xs text-gray-500 mb-5 font-extrabold uppercase tracking-wide">Serum • 75ml</p>
               
               <div className="flex gap-2">
                   <a 
                     href="https://plumgoodness.com/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-white bg-plum-primary px-4 py-2.5 rounded-xl shadow-lg shadow-plum-primary/30 hover:bg-plum-deep transition-all active:scale-95"
+                    className="inline-flex items-center gap-1.5 text-[10px] font-extrabold text-white bg-plum-primary px-4 py-3 rounded-xl shadow-lg shadow-plum-primary/30 hover:bg-plum-deep transition-all active:scale-95"
                   >
                     View Website <ExternalLink size={10} strokeWidth={3} />
                   </a>
@@ -144,7 +143,7 @@ const HomeScreen: React.FC = () => {
       <div className="px-6 grid grid-cols-4 gap-3 mb-10 relative z-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
         {[
           { icon: ShieldCheck, label: 'Authentic', path: AppRoute.AUTHENTICITY, color: 'text-green-600', bg: 'bg-green-50' },
-          { icon: HelpCircle, label: 'How to Use', path: AppRoute.INFO, color: 'text-blue-600', bg: 'bg-blue-50' },
+          { icon: HelpCircle, label: 'Usage', path: AppRoute.INFO, color: 'text-blue-600', bg: 'bg-blue-50' },
           { icon: Gift, label: 'Rewards', path: AppRoute.REWARDS, color: 'text-orange-600', bg: 'bg-orange-50' },
           { icon: Star, label: 'Review', path: AppRoute.REVIEW, color: 'text-yellow-600', bg: 'bg-yellow-50' },
         ].map((item, idx) => (
@@ -155,7 +154,7 @@ const HomeScreen: React.FC = () => {
           >
             <div className="w-[76px] h-[76px] bg-white rounded-[24px] shadow-[0_4px_20px_rgba(0,0,0,0.06)] border border-gray-50 flex items-center justify-center transition-all duration-300 group-hover:-translate-y-1 group-active:scale-95 group-active:shadow-none">
               <div className={`w-11 h-11 rounded-2xl ${item.bg} flex items-center justify-center ${item.color}`}>
-                 <item.icon size={22} strokeWidth={2.5} />
+                 <item.icon size={24} strokeWidth={2.5} />
               </div>
             </div>
             <span className="text-[11px] font-extrabold text-gray-700 tracking-tight">{item.label}</span>
@@ -166,8 +165,8 @@ const HomeScreen: React.FC = () => {
       {/* Usage Section (Redesigned - Linear Progress) */}
       <div className="mb-10 relative z-10 px-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
          <div className="flex justify-between items-end mb-4">
-            <h3 className="font-extrabold text-gray-900 text-xl">My Usage</h3>
-            <span className="text-[10px] text-plum-primary font-bold uppercase tracking-wider bg-plum-light px-2 py-0.5 rounded-md">
+            <h3 className="font-extrabold text-gray-900 text-xl tracking-tight">My Usage</h3>
+            <span className="text-[10px] text-plum-primary font-extrabold uppercase tracking-wider bg-plum-light px-2 py-1 rounded-md">
               Track & Refill
             </span>
          </div>
@@ -205,7 +204,7 @@ const HomeScreen: React.FC = () => {
                  onClick={() => setShowUsageModal(true)}
                  className="flex-1 py-3 rounded-xl bg-gray-50 text-gray-600 text-xs font-extrabold hover:bg-gray-100 transition-colors border border-gray-200"
                >
-                 Usage Tips
+                 View Tips
                </button>
                <button 
                  onClick={() => navigate(AppRoute.REFILL)}
@@ -217,29 +216,30 @@ const HomeScreen: React.FC = () => {
          </div>
       </div>
 
-      {/* Immersive Journey Teaser */}
+      {/* Immersive Journey Teaser - Redesigned */}
       <div className="px-6 mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
         <div 
           onClick={() => navigate(AppRoute.JOURNEY)}
-          className="group relative h-44 rounded-[32px] overflow-hidden shadow-xl shadow-plum-primary/10 cursor-pointer"
+          className="group relative h-44 rounded-[32px] overflow-hidden shadow-xl shadow-plum-primary/10 cursor-pointer border border-white"
         >
-          {/* Background Image */}
+          {/* Background Image - Logistics Map Theme */}
           <img 
-            src="https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=80&w=800&auto=format&fit=crop" 
-            alt="Coconut Farm" 
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" 
+            alt="Logistics Map" 
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 saturate-50 opacity-90"
           />
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-plum-deep/90 via-plum-primary/60 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-plum-deep/95 via-plum-deep/70 to-transparent"></div>
           
           <div className="absolute inset-0 p-7 flex flex-col justify-center text-white">
             <div className="w-10 h-10 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-3 shadow-inner border border-white/20">
-              <MapIcon size={18} className="text-white" />
+              <Navigation size={18} className="text-white fill-white/20" />
             </div>
-            <h3 className="text-2xl font-black leading-none mb-2">Farm to<br/>Bottle</h3>
-            <p className="text-xs text-white/90 font-semibold mb-4 max-w-[60%]">Trace the pure origin of your coconut ingredients.</p>
-            <div className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-wider bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-lg w-fit">
-               <span>Start Journey</span> <ArrowRight size={12} strokeWidth={3} />
+            <h3 className="text-2xl font-black leading-none mb-2 tracking-tight">Track Your<br/>Product</h3>
+            <p className="text-xs text-white/80 font-bold mb-5 max-w-[65%] leading-relaxed">Trace the journey from source to your doorstep.</p>
+            
+            <div className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-widest bg-white text-plum-deep px-4 py-2 rounded-xl w-fit shadow-lg">
+               <span>Start Tracking</span> <ArrowRight size={12} strokeWidth={3} />
             </div>
           </div>
         </div>
@@ -249,11 +249,11 @@ const HomeScreen: React.FC = () => {
       <div className="mb-8 animate-slide-up" style={{ animationDelay: '0.5s' }}>
         <div className="px-6 flex justify-between items-center mb-5">
           <div>
-             <h3 className="font-extrabold text-gray-900 text-xl">Curated Routine</h3>
-             <p className="text-xs text-gray-500 font-bold mt-0.5">Expert recommended steps</p>
+             <h3 className="font-extrabold text-gray-900 text-xl tracking-tight">Curated Routine</h3>
+             <p className="text-xs text-gray-500 font-bold mt-0.5">Complete the look</p>
           </div>
-          <div className="bg-plum-light p-2 rounded-lg">
-            <Layers size={16} className="text-plum-primary" />
+          <div className="bg-plum-light p-2.5 rounded-xl">
+            <Layers size={18} className="text-plum-primary" />
           </div>
         </div>
         
@@ -263,7 +263,7 @@ const HomeScreen: React.FC = () => {
             { step: '02', title: 'Treat', name: 'Hair Mask', desc: 'Deep Condition', price: '₹550', img: 'https://images.unsplash.com/photo-1556228552-603be3301d31?q=80&w=400&auto=format&fit=crop' },
             { step: '03', title: 'Boost', name: 'Scalp Serum', desc: 'Root Strength', price: '₹450', img: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?q=80&w=400&auto=format&fit=crop' },
           ].map((item, idx) => (
-            <div key={idx} className="snap-center min-w-[200px] bg-white p-3 rounded-[24px] border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] flex flex-col relative group">
+            <div key={idx} className="snap-center min-w-[180px] bg-white p-3 rounded-[24px] border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] flex flex-col relative group">
               
               <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-[10px] font-black text-gray-900 shadow-sm border border-gray-100">
                  Step {item.step}
@@ -274,12 +274,12 @@ const HomeScreen: React.FC = () => {
               </div>
               
               <div className="px-1">
-                <span className="text-[10px] font-bold text-plum-primary uppercase tracking-wider mb-1 block">{item.title}</span>
-                <h4 className="text-sm font-black text-gray-900 mb-0.5 truncate">{item.name}</h4>
-                <p className="text-[10px] text-gray-500 font-semibold mb-3">{item.desc}</p>
+                <span className="text-[10px] font-extrabold text-plum-primary uppercase tracking-wider mb-1 block">{item.title}</span>
+                <h4 className="text-sm font-black text-gray-900 mb-0.5 truncate tracking-tight">{item.name}</h4>
+                <p className="text-[10px] text-gray-500 font-bold mb-3">{item.desc}</p>
                 
-                <button className="w-full py-2 bg-gray-50 hover:bg-plum-primary hover:text-white text-gray-800 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center gap-2 border border-gray-200 hover:border-plum-primary">
-                   Add for {item.price} <Plus size={12} strokeWidth={3} />
+                <button className="w-full py-2.5 bg-gray-50 hover:bg-plum-primary hover:text-white text-gray-800 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center gap-2 border border-gray-200 hover:border-plum-primary">
+                   Add <Plus size={12} strokeWidth={3} />
                 </button>
               </div>
             </div>
@@ -300,7 +300,7 @@ const HomeScreen: React.FC = () => {
                alt="Plum" 
                className="h-6 w-auto mx-auto mb-2 opacity-80"
           />
-          <p className="text-xs text-gray-600 font-bold mb-8">
+          <p className="text-xs text-gray-600 font-extrabold mb-8">
             Pureplay Skin Sciences (India) Pvt Ltd
           </p>
           
@@ -311,19 +311,21 @@ const HomeScreen: React.FC = () => {
           </div>
       </div>
 
-      {/* Floating Chat Bubble (Ask an Expert) - FIXED POSITIONING */}
-      <div className="fixed bottom-[90px] left-1/2 transform -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-50 flex flex-col items-end px-4">
-         {/* Tooltip */}
-         <div className="bg-white px-4 py-2.5 rounded-l-2xl rounded-t-2xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] border border-gray-100 animate-fade-in origin-bottom-right mb-1 mr-1">
-            <p className="text-xs font-bold text-gray-800">Hi! Need hair advice? 👋</p>
+      {/* Floating Chat Bubble (Ask an Expert) - FIXED POSITIONING INSIDE CONTAINER */}
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-50 h-full">
+         <div className="absolute bottom-[90px] right-4 flex flex-col items-end pointer-events-auto">
+             {/* Tooltip */}
+             <div className="bg-white px-4 py-2.5 rounded-l-2xl rounded-t-2xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] border border-gray-100 animate-fade-in origin-bottom-right mb-2 mr-1">
+                <p className="text-xs font-extrabold text-gray-800">Hi! Need hair advice? 👋</p>
+             </div>
+             
+             <button 
+                onClick={() => navigate(AppRoute.CHAT)}
+                className="w-14 h-14 bg-[#4A0072] text-white rounded-full shadow-xl shadow-plum-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center border-2 border-white animate-bounce-subtle"
+             >
+               <MessageCircle size={24} className="fill-white/20" />
+             </button>
          </div>
-         
-         <button 
-            onClick={() => navigate(AppRoute.CHAT)}
-            className="pointer-events-auto w-14 h-14 bg-[#4A0072] text-white rounded-full shadow-xl shadow-plum-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center border-2 border-white animate-bounce-subtle"
-         >
-           <MessageCircle size={24} className="fill-white/20" />
-         </button>
       </div>
 
       {/* Usage Details Modal (Bottom Sheet) */}
@@ -345,7 +347,7 @@ const HomeScreen: React.FC = () => {
               <X size={20} />
             </button>
 
-            <h2 className="text-2xl font-black text-gray-900 mb-8 flex items-center gap-2">
+            <h2 className="text-2xl font-black text-gray-900 mb-8 flex items-center gap-2 tracking-tight">
                Usage Guide
             </h2>
 
@@ -367,7 +369,7 @@ const HomeScreen: React.FC = () => {
                         </div>
                         <div>
                            <span className="block text-sm font-extrabold text-gray-900 mb-0.5">{step.title}</span>
-                           <span className="text-sm text-gray-500 font-medium">{step.text}</span>
+                           <span className="text-sm text-gray-500 font-bold">{step.text}</span>
                         </div>
                      </li>
                   ))}

@@ -18,7 +18,9 @@ import {
   Sparkles,
   Map as MapIcon,
   ShoppingBag,
-  Share2
+  Share2,
+  Layers,
+  Plus
 } from 'lucide-react';
 import { AppRoute } from '../types';
 
@@ -54,12 +56,12 @@ const HomeScreen: React.FC = () => {
     <div className="flex flex-col min-h-full pb-24 relative bg-[#FDFBFF]">
       
       {/* NEW BOLD HEADER */}
-      <div className="bg-plum-deep pt-12 pb-24 rounded-b-[40px] relative overflow-hidden z-0">
+      <div className="bg-plum-deep pt-12 pb-24 rounded-b-[40px] relative overflow-hidden z-0 animate-fade-in">
         {/* Background Patterns */}
         <div className="absolute top-0 left-0 w-full h-full opacity-10" 
              style={{ backgroundImage: 'radial-gradient(circle, white 2px, transparent 2.5px)', backgroundSize: '20px 20px' }}>
         </div>
-        <div className="absolute -top-10 -right-10 w-40 h-40 bg-plum-primary rounded-full blur-3xl opacity-50"></div>
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-plum-primary rounded-full blur-3xl opacity-50 animate-pulse-slow"></div>
         <div className="absolute top-20 -left-10 w-32 h-32 bg-peach rounded-full blur-3xl opacity-20"></div>
 
         <div className="px-6 flex justify-between items-start relative z-10">
@@ -82,14 +84,14 @@ const HomeScreen: React.FC = () => {
           >
             <Bell size={22} className="text-white" />
             {hasNotification && (
-              <span className="absolute top-2 right-2.5 w-2.5 h-2.5 bg-peach border-2 border-plum-deep rounded-full shadow-sm"></span>
+              <span className="absolute top-2 right-2.5 w-2.5 h-2.5 bg-peach border-2 border-plum-deep rounded-full shadow-sm animate-bounce"></span>
             )}
           </button>
         </div>
       </div>
 
       {/* Hero Product Section - 3D Pop Out Effect */}
-      <div className="px-6 -mt-16 mb-8 relative z-10">
+      <div className="px-6 -mt-16 mb-8 relative z-10 animate-slide-up" style={{ animationDelay: '0.1s' }}>
         <div className="bg-white rounded-[32px] p-5 shadow-[0_15px_40px_rgba(74,0,114,0.1)] border border-white relative overflow-visible">
           
           <div className="flex items-center">
@@ -127,11 +129,11 @@ const HomeScreen: React.FC = () => {
             {/* Floating Image */}
             <div className="w-[120px] shrink-0 relative -mr-2 -mt-8">
                {/* Glow effect behind bottle */}
-               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-plum-primary/20 rounded-full blur-2xl"></div>
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-plum-primary/20 rounded-full blur-2xl animate-pulse-slow"></div>
                <img 
                  src="https://plumgoodness.com/cdn/shop/files/1_d6006e8c-5722-4917-8e1c-5764d720c7d4.jpg?v=1738737330&width=1000" 
                  alt="Coconut Hair Serum" 
-                 className="w-full h-auto object-contain drop-shadow-2xl transform scale-110" 
+                 className="w-full h-auto object-contain drop-shadow-2xl transform scale-110 animate-float" 
                />
             </div>
           </div>
@@ -139,7 +141,7 @@ const HomeScreen: React.FC = () => {
       </div>
 
       {/* Quick Actions - Bright Cards */}
-      <div className="px-6 grid grid-cols-4 gap-3 mb-10 relative z-10">
+      <div className="px-6 grid grid-cols-4 gap-3 mb-10 relative z-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
         {[
           { icon: ShieldCheck, label: 'Authentic', path: AppRoute.AUTHENTICITY, color: 'text-green-600', bg: 'bg-green-50' },
           { icon: HelpCircle, label: 'How to Use', path: AppRoute.INFO, color: 'text-blue-600', bg: 'bg-blue-50' },
@@ -162,7 +164,7 @@ const HomeScreen: React.FC = () => {
       </div>
 
       {/* Usage Section (Redesigned - Linear Progress) */}
-      <div className="mb-10 relative z-10 px-6">
+      <div className="mb-10 relative z-10 px-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
          <div className="flex justify-between items-end mb-4">
             <h3 className="font-extrabold text-gray-900 text-xl">My Usage</h3>
             <span className="text-[10px] text-plum-primary font-bold uppercase tracking-wider bg-plum-light px-2 py-0.5 rounded-md">
@@ -216,7 +218,7 @@ const HomeScreen: React.FC = () => {
       </div>
 
       {/* Immersive Journey Teaser */}
-      <div className="px-6 mb-12">
+      <div className="px-6 mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
         <div 
           onClick={() => navigate(AppRoute.JOURNEY)}
           className="group relative h-44 rounded-[32px] overflow-hidden shadow-xl shadow-plum-primary/10 cursor-pointer"
@@ -243,30 +245,42 @@ const HomeScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Recommended Routine - Horizontal Scroll */}
-      <div className="mb-8">
+      {/* Recommended Routine - Redesigned */}
+      <div className="mb-8 animate-slide-up" style={{ animationDelay: '0.5s' }}>
         <div className="px-6 flex justify-between items-center mb-5">
-          <h3 className="font-extrabold text-gray-900 text-xl">Complete the Look</h3>
+          <div>
+             <h3 className="font-extrabold text-gray-900 text-xl">Curated Routine</h3>
+             <p className="text-xs text-gray-500 font-bold mt-0.5">Expert recommended steps</p>
+          </div>
+          <div className="bg-plum-light p-2 rounded-lg">
+            <Layers size={16} className="text-plum-primary" />
+          </div>
         </div>
         
-        <div className="flex gap-4 overflow-x-auto px-6 pb-8 no-scrollbar snap-x">
+        <div className="flex gap-3 overflow-x-auto px-6 pb-8 no-scrollbar snap-x">
           {[
-            { name: 'Coconut Shampoo', desc: 'Soft Cleanse', price: '₹349', img: 'https://plumgoodness.com/cdn/shop/products/CoconutMilkandPeptidesStrength_ShineShampoo_250ml_1.jpg?v=1661506509&width=300' },
-            { name: 'Hair Mask', desc: 'Deep Condition', price: '₹550', img: 'https://plumgoodness.com/cdn/shop/products/CoconutMilk_PeptidesStrength_ShineHairMask_1_720x.jpg?v=1653039641&width=300' },
-            { name: 'Scalp Serum', desc: 'Root Strength', price: '₹450', img: 'https://plumgoodness.com/cdn/shop/files/GinsengRootandPeptidesScalpGrowthSerum-100ml_1.jpg?v=1701339185&width=300' },
+            { step: '01', title: 'Cleanse', name: 'Coconut Shampoo', desc: 'Soft Cleanse', price: '₹349', img: 'https://plumgoodness.com/cdn/shop/products/CoconutMilkandPeptidesStrength_ShineShampoo_250ml_1.jpg?v=1661506509&width=300' },
+            { step: '02', title: 'Treat', name: 'Hair Mask', desc: 'Deep Condition', price: '₹550', img: 'https://plumgoodness.com/cdn/shop/products/CoconutMilk_PeptidesStrength_ShineHairMask_1_720x.jpg?v=1653039641&width=300' },
+            { step: '03', title: 'Boost', name: 'Scalp Serum', desc: 'Root Strength', price: '₹450', img: 'https://plumgoodness.com/cdn/shop/files/GinsengRootandPeptidesScalpGrowthSerum-100ml_1.jpg?v=1701339185&width=300' },
           ].map((item, idx) => (
-            <div key={idx} className="snap-center min-w-[150px] bg-white p-3 rounded-[24px] border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.04)] flex flex-col transition-transform hover:-translate-y-1">
-              <div className="w-full aspect-square bg-gray-50 rounded-2xl mb-3 overflow-hidden relative group">
-                <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform group-hover:scale-105" />
-                <button className="absolute bottom-2 right-2 w-7 h-7 bg-white rounded-full flex items-center justify-center text-plum-primary shadow-md">
-                   <ShoppingBag size={14} />
-                </button>
+            <div key={idx} className="snap-center min-w-[200px] bg-white p-3 rounded-[24px] border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] flex flex-col relative group">
+              
+              <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-[10px] font-black text-gray-900 shadow-sm border border-gray-100">
+                 Step {item.step}
               </div>
-              <h4 className="text-xs font-extrabold text-gray-900 mb-0.5 truncate">{item.name}</h4>
-              <p className="text-[10px] text-gray-500 font-semibold mb-3">{item.desc}</p>
-              <div className="mt-auto flex justify-between items-center">
-                 <span className="text-xs font-black text-gray-900">{item.price}</span>
-                 <span className="text-[10px] text-plum-primary font-extrabold uppercase bg-plum-light px-2 py-1 rounded-md">Add</span>
+
+              <div className="w-full aspect-[4/3] bg-gray-50 rounded-2xl mb-3 overflow-hidden relative">
+                <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              
+              <div className="px-1">
+                <span className="text-[10px] font-bold text-plum-primary uppercase tracking-wider mb-1 block">{item.title}</span>
+                <h4 className="text-sm font-black text-gray-900 mb-0.5 truncate">{item.name}</h4>
+                <p className="text-[10px] text-gray-500 font-semibold mb-3">{item.desc}</p>
+                
+                <button className="w-full py-2 bg-gray-50 hover:bg-plum-primary hover:text-white text-gray-800 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center gap-2 border border-gray-200 hover:border-plum-primary">
+                   Add for {item.price} <Plus size={12} strokeWidth={3} />
+                </button>
               </div>
             </div>
           ))}
@@ -274,7 +288,7 @@ const HomeScreen: React.FC = () => {
       </div>
 
       {/* Footer Info */}
-      <div className="px-6 pb-10 text-center pt-10 bg-gradient-to-b from-transparent to-plum-light/20 -mx-0">
+      <div className="px-6 pb-10 text-center pt-10 bg-gradient-to-b from-transparent to-plum-light/20 -mx-0 animate-fade-in">
           <div className="inline-block p-4 rounded-full bg-white text-gray-400 mb-4 shadow-sm">
              <Box size={20} strokeWidth={1.5} />
           </div>
@@ -297,16 +311,16 @@ const HomeScreen: React.FC = () => {
           </div>
       </div>
 
-      {/* Floating Chat Bubble (Ask an Expert) */}
-      <div className="fixed bottom-[90px] right-4 pointer-events-none z-50 flex flex-col items-end gap-2">
+      {/* Floating Chat Bubble (Ask an Expert) - FIXED POSITIONING */}
+      <div className="fixed bottom-[90px] left-1/2 transform -translate-x-1/2 w-full max-w-[430px] pointer-events-none z-50 flex flex-col items-end px-4">
          {/* Tooltip */}
-         <div className="bg-white px-4 py-2.5 rounded-l-2xl rounded-t-2xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] border border-gray-100 animate-fade-in origin-bottom-right mb-1">
+         <div className="bg-white px-4 py-2.5 rounded-l-2xl rounded-t-2xl shadow-[0_4px_15px_rgba(0,0,0,0.1)] border border-gray-100 animate-fade-in origin-bottom-right mb-1 mr-1">
             <p className="text-xs font-bold text-gray-800">Hi! Need hair advice? 👋</p>
          </div>
          
          <button 
             onClick={() => navigate(AppRoute.CHAT)}
-            className="pointer-events-auto w-14 h-14 bg-[#4A0072] text-white rounded-full shadow-xl shadow-plum-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center border-2 border-white"
+            className="pointer-events-auto w-14 h-14 bg-[#4A0072] text-white rounded-full shadow-xl shadow-plum-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center justify-center border-2 border-white animate-bounce-subtle"
          >
            <MessageCircle size={24} className="fill-white/20" />
          </button>

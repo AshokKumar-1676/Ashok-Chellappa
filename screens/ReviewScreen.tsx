@@ -40,7 +40,7 @@ const ReviewScreen: React.FC = () => {
       <div className="px-6 py-6 flex-1 overflow-y-auto">
         <div className="flex items-center gap-4 mb-8">
             <img 
-              src="https://plumgoodness.com/cdn/shop/files/1_d6006e8c-5722-4917-8e1c-5764d720c7d4.jpg?v=1738737330&width=150" 
+              src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=150&auto=format&fit=crop" 
               className="w-16 h-16 rounded-lg object-cover bg-gray-50"
               alt="Product"
             />

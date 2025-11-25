@@ -3,7 +3,7 @@ import { Droplet, Sparkles, Heart, PlayCircle, ChevronRight, Building2, Camera }
 
 // Images for banner
 const bannerImages = [
-   "https://plumgoodness.com/cdn/shop/files/1_d6006e8c-5722-4917-8e1c-5764d720c7d4.jpg?v=1738737330&width=1000",
+   "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=1000&auto=format&fit=crop",
    "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=1000&auto=format&fit=crop",
    "https://images.unsplash.com/photo-1616353956184-7832822da8e8?q=80&w=1000&auto=format&fit=crop",
    "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=1000&auto=format&fit=crop"
@@ -14,7 +14,7 @@ const ingredientsData = [
     {
         name: 'Coconut Oil',
         desc: 'An ingredient rich in Vitamin E and fatty acids, helps nourish hair and additionally restores hair moisture.',
-        image: 'https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=200&auto=format&fit=crop'
+        image: 'https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=80&w=200&auto=format&fit=crop'
     },
     {
         name: 'Squalane',
@@ -168,12 +168,12 @@ const ProductInfoScreen: React.FC = () => {
                   { 
                     title: 'Dispense', 
                     desc: 'Take 1-2 pumps of serum on your palm.',
-                    img: 'https://plumgoodness.com/cdn/shop/files/1_d6006e8c-5722-4917-8e1c-5764d720c7d4.jpg?v=1738737330&width=200'
+                    img: 'https://images.unsplash.com/photo-1616353956184-7832822da8e8?q=80&w=200&auto=format&fit=crop'
                   },
                   { 
                     title: 'Warm Up', 
                     desc: 'Rub palms together to warm the product.',
-                    img: 'https://images.unsplash.com/photo-1616353956184-7832822da8e8?q=80&w=200&auto=format&fit=crop'
+                    img: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=200&auto=format&fit=crop'
                   },
                   { 
                     title: 'Apply', 

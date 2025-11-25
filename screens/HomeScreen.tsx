@@ -131,7 +131,7 @@ const HomeScreen: React.FC = () => {
                {/* Glow effect behind bottle */}
                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 bg-plum-primary/20 rounded-full blur-2xl animate-pulse-slow"></div>
                <img 
-                 src="https://plumgoodness.com/cdn/shop/files/1_d6006e8c-5722-4917-8e1c-5764d720c7d4.jpg?v=1738737330&width=1000" 
+                 src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=800&auto=format&fit=crop" 
                  alt="Coconut Hair Serum" 
                  className="w-full h-auto object-contain drop-shadow-2xl transform scale-110 animate-float" 
                />
@@ -225,7 +225,7 @@ const HomeScreen: React.FC = () => {
         >
           {/* Background Image */}
           <img 
-            src="https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?q=80&w=800&auto=format&fit=crop" 
+            src="https://images.unsplash.com/photo-1596178060671-7a80dc8059ea?q=80&w=800&auto=format&fit=crop" 
             alt="Coconut Farm" 
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
@@ -259,9 +259,9 @@ const HomeScreen: React.FC = () => {
         
         <div className="flex gap-3 overflow-x-auto px-6 pb-8 no-scrollbar snap-x">
           {[
-            { step: '01', title: 'Cleanse', name: 'Coconut Shampoo', desc: 'Soft Cleanse', price: '₹349', img: 'https://plumgoodness.com/cdn/shop/products/CoconutMilkandPeptidesStrength_ShineShampoo_250ml_1.jpg?v=1661506509&width=300' },
-            { step: '02', title: 'Treat', name: 'Hair Mask', desc: 'Deep Condition', price: '₹550', img: 'https://plumgoodness.com/cdn/shop/products/CoconutMilk_PeptidesStrength_ShineHairMask_1_720x.jpg?v=1653039641&width=300' },
-            { step: '03', title: 'Boost', name: 'Scalp Serum', desc: 'Root Strength', price: '₹450', img: 'https://plumgoodness.com/cdn/shop/files/GinsengRootandPeptidesScalpGrowthSerum-100ml_1.jpg?v=1701339185&width=300' },
+            { step: '01', title: 'Cleanse', name: 'Coconut Shampoo', desc: 'Soft Cleanse', price: '₹349', img: 'https://images.unsplash.com/photo-1631729371254-42c2a89ddf0d?q=80&w=400&auto=format&fit=crop' },
+            { step: '02', title: 'Treat', name: 'Hair Mask', desc: 'Deep Condition', price: '₹550', img: 'https://images.unsplash.com/photo-1556228552-603be3301d31?q=80&w=400&auto=format&fit=crop' },
+            { step: '03', title: 'Boost', name: 'Scalp Serum', desc: 'Root Strength', price: '₹450', img: 'https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?q=80&w=400&auto=format&fit=crop' },
           ].map((item, idx) => (
             <div key={idx} className="snap-center min-w-[200px] bg-white p-3 rounded-[24px] border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] flex flex-col relative group">
               

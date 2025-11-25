@@ -32,7 +32,7 @@ const RefillScreen: React.FC = () => {
             </div>
             
             <img 
-                src="https://plumgoodness.com/cdn/shop/files/1_d6006e8c-5722-4917-8e1c-5764d720c7d4.jpg?v=1738737330&width=400" 
+                src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=400" 
                 alt="Refill Pack"
                 className="w-full h-48 object-cover rounded-2xl mb-4"
             />

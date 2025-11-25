@@ -33,4 +33,5 @@ export enum AppRoute {
   CHAT = '/chat',
   REFILL = '/refill',
   NOTIFICATIONS = '/notifications',
+  AR_SCAN = '/ar-scan',
 }

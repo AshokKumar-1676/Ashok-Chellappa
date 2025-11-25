@@ -15,6 +15,7 @@ import ReviewScreen from './screens/ReviewScreen';
 import ChatScreen from './screens/ChatScreen';
 import RefillScreen from './screens/RefillScreen';
 import NotificationsScreen from './screens/NotificationsScreen';
+import ARScanScreen from './screens/ARScanScreen';
 
 const App: React.FC = () => {
   return (
@@ -31,6 +32,7 @@ const App: React.FC = () => {
           <Route path={AppRoute.CHAT} element={<ChatScreen />} />
           <Route path={AppRoute.REFILL} element={<RefillScreen />} />
           <Route path={AppRoute.NOTIFICATIONS} element={<NotificationsScreen />} />
+          <Route path={AppRoute.AR_SCAN} element={<ARScanScreen />} />
         </Routes>
         <BottomNav />
       </Layout>

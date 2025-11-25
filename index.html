@@ -32,6 +32,7 @@
               'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'float': 'float 3s ease-in-out infinite',
               'bounce-subtle': 'bounceSubtle 2s infinite',
+              'pan': 'pan 20s linear infinite',
             },
             keyframes: {
               fadeIn: {
@@ -49,6 +50,10 @@
               bounceSubtle: {
                 '0%, 100%': { transform: 'translateY(0)' },
                 '50%': { transform: 'translateY(-5px)' },
+              },
+              pan: {
+                '0%': { backgroundPosition: '0% 0%' },
+                '100%': { backgroundPosition: '100% 100%' },
               }
             }
           },

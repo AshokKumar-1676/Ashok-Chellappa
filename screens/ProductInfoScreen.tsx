@@ -57,12 +57,12 @@ const ProductInfoScreen: React.FC = () => {
 
         {/* Text Overlay */}
         <div className="absolute bottom-6 left-6 text-white pointer-events-none z-10 pr-6">
-          <div className="bg-peach text-white text-[10px] font-black px-2 py-1 rounded-md inline-block mb-3 shadow-sm uppercase tracking-wider">Bestseller</div>
-          <h1 className="text-3xl font-black leading-none drop-shadow-lg mb-1">Coconut Squalane</h1>
-          <h2 className="text-xl font-bold opacity-90">Nutri-Shine Serum</h2>
+          <div className="bg-peach text-white text-[10px] font-black px-2.5 py-1 rounded-md inline-block mb-3 shadow-sm uppercase tracking-widest">Bestseller</div>
+          <h1 className="text-3xl font-black leading-none drop-shadow-lg mb-1 tracking-tight">Coconut Squalane</h1>
+          <h2 className="text-xl font-bold opacity-90 tracking-wide">Nutri-Shine Serum</h2>
         </div>
         
-        <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md rounded-full px-3 py-1.5 text-[10px] text-white font-bold flex items-center gap-1.5 border border-white/10">
+        <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-md rounded-full px-3 py-1.5 text-[10px] text-white font-extrabold flex items-center gap-1.5 border border-white/10 uppercase tracking-wide">
             <Camera size={14} /> Gallery
         </div>
       </div>
@@ -71,13 +71,13 @@ const ProductInfoScreen: React.FC = () => {
       <div className="px-6 py-4 flex gap-4 border-b border-gray-100 bg-white sticky top-0 z-20 shadow-sm">
         <button 
           onClick={() => setActiveTab('info')}
-          className={`flex-1 py-3 text-sm font-extrabold rounded-2xl transition-all ${activeTab === 'info' ? 'bg-plum-primary text-white shadow-lg shadow-plum-primary/20' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
+          className={`flex-1 py-3.5 text-xs font-extrabold uppercase tracking-wide rounded-2xl transition-all ${activeTab === 'info' ? 'bg-plum-primary text-white shadow-lg shadow-plum-primary/20' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
         >
           Product Info
         </button>
         <button 
           onClick={() => setActiveTab('usage')}
-          className={`flex-1 py-3 text-sm font-extrabold rounded-2xl transition-all ${activeTab === 'usage' ? 'bg-plum-primary text-white shadow-lg shadow-plum-primary/20' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
+          className={`flex-1 py-3.5 text-xs font-extrabold uppercase tracking-wide rounded-2xl transition-all ${activeTab === 'usage' ? 'bg-plum-primary text-white shadow-lg shadow-plum-primary/20' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
         >
           How to Use
         </button>
@@ -95,14 +95,14 @@ const ProductInfoScreen: React.FC = () => {
               ].map((item, idx) => (
                 <div key={idx} className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)]">
                   <div className="text-plum-primary mb-2"><item.icon size={24} strokeWidth={2} /></div>
-                  <span className="text-xs font-extrabold text-gray-800">{item.label}</span>
+                  <span className="text-xs font-extrabold text-gray-800 uppercase tracking-wide">{item.label}</span>
                 </div>
               ))}
             </div>
 
             {/* Description */}
             <div>
-              <h3 className="font-extrabold text-gray-900 mb-3 text-lg">Why you'll love it</h3>
+              <h3 className="font-extrabold text-gray-900 mb-3 text-lg tracking-tight">Why you'll love it</h3>
               <p className="text-sm text-gray-600 leading-relaxed font-bold">
                 A lightweight, pre-wash hair oil or post-wash serum that smoothens hair and adds a glossy shine. Infused with <span className="text-plum-primary font-black">squalane</span>, <span className="text-plum-primary font-black">coconut oil</span>, and <span className="text-plum-primary font-black">almond oil</span> to nourish strands without weighing them down.
               </p>
@@ -110,7 +110,7 @@ const ProductInfoScreen: React.FC = () => {
 
             {/* Detailed Ingredients with Images */}
             <div>
-              <h3 className="font-extrabold text-gray-900 mb-5 text-lg flex items-center gap-2">
+              <h3 className="font-extrabold text-gray-900 mb-5 text-lg flex items-center gap-2 tracking-tight">
                  Key Ingredients
               </h3>
               <div className="space-y-4">
@@ -120,7 +120,7 @@ const ProductInfoScreen: React.FC = () => {
                         <img src={ing.image} alt={ing.name} className="w-full h-full object-cover" />
                     </div>
                     <div>
-                        <h4 className="font-black text-plum-deep text-sm mb-1">{ing.name}</h4>
+                        <h4 className="font-black text-plum-deep text-sm mb-1 uppercase tracking-wide">{ing.name}</h4>
                         <p className="text-xs text-gray-600 leading-relaxed font-bold">
                             {ing.desc}
                         </p>
@@ -153,13 +153,13 @@ const ProductInfoScreen: React.FC = () => {
                <div className="relative z-10 w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
                    <PlayCircle size={32} className="fill-white" />
                </div>
-               <span className="relative z-10 text-xs mt-3 font-black uppercase tracking-wider">Watch Tutorial</span>
+               <span className="relative z-10 text-xs mt-3 font-black uppercase tracking-widest">Watch Tutorial</span>
             </div>
 
             {/* Horizontal Scroll Steps */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                 <h3 className="font-extrabold text-gray-900 text-lg">Step-by-Step Routine</h3>
+                 <h3 className="font-extrabold text-gray-900 text-lg tracking-tight">Step-by-Step Routine</h3>
                  <div className="text-[10px] font-bold text-gray-400 flex items-center gap-1 uppercase tracking-wide">Swipe <ChevronRight size={10} /></div>
               </div>
               
@@ -194,7 +194,7 @@ const ProductInfoScreen: React.FC = () => {
                       </div>
                     </div>
                     <div className="p-5 flex flex-col grow">
-                      <h4 className="font-extrabold text-gray-900 text-sm mb-1">{step.title}</h4>
+                      <h4 className="font-extrabold text-gray-900 text-sm mb-1 uppercase tracking-wide">{step.title}</h4>
                       <p className="text-xs text-gray-500 leading-relaxed font-bold">{step.desc}</p>
                     </div>
                   </div>

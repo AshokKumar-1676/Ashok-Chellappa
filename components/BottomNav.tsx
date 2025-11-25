@@ -31,9 +31,9 @@ const BottomNav: React.FC = () => {
                 }`}
               >
                 <div className={`p-1.5 rounded-xl transition-colors duration-300 ${isActive ? 'bg-plum-light' : 'bg-transparent'}`}>
-                  <item.icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+                  <item.icon size={22} strokeWidth={isActive ? 3 : 2} />
                 </div>
-                <span className={`text-[10px] font-bold mt-1 ${isActive ? 'opacity-100' : 'opacity-70'}`}>
+                <span className={`text-[10px] font-extrabold mt-1 tracking-wide uppercase ${isActive ? 'opacity-100' : 'opacity-70'}`}>
                   {item.label}
                 </span>
               </button>

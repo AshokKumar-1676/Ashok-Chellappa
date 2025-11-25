@@ -15,9 +15,9 @@ const AuthenticityScreen: React.FC = () => {
             <button onClick={() => navigate(-1)} className="mr-3 text-gray-500 hover:text-plum-primary">
                 <ChevronLeft size={24} />
             </button>
-            <h1 className="text-2xl font-black text-gray-900">Authenticity Check</h1>
+            <h1 className="text-2xl font-black text-gray-900 tracking-tight">Authenticity Check</h1>
         </div>
-        <p className="text-gray-500 text-sm font-medium">Verified Product Scan Results</p>
+        <p className="text-gray-500 text-sm font-bold tracking-wide">Verified Product Scan Results</p>
       </div>
 
       <div className="px-6 mb-6">
@@ -44,7 +44,7 @@ const AuthenticityScreen: React.FC = () => {
               )}
             </div>
             
-            <h2 className={`text-2xl font-black mb-2 transition-colors duration-500 ${isSuspicious ? 'text-red-700' : 'text-green-700'}`}>
+            <h2 className={`text-2xl font-black mb-2 tracking-tight transition-colors duration-500 ${isSuspicious ? 'text-red-700' : 'text-green-700'}`}>
               {isSuspicious ? 'Suspicious Scan!' : '100% Authentic'}
             </h2>
             <p className={`text-sm transition-colors duration-500 ${isSuspicious ? 'text-red-500/80 font-bold' : 'text-gray-500 font-bold'}`}>
@@ -65,24 +65,24 @@ const AuthenticityScreen: React.FC = () => {
               <div key={index} className="flex items-center justify-between py-4 px-4 border-b border-gray-50 last:border-0">
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="p-2 bg-gray-50 rounded-lg"><detail.icon size={18} /></div>
-                  <span className="text-sm font-bold">{detail.label}</span>
+                  <span className="text-sm font-bold tracking-wide">{detail.label}</span>
                 </div>
-                <span className="font-black text-gray-900 text-sm">{detail.value}</span>
+                <span className="font-black text-gray-900 text-sm tracking-wide">{detail.value}</span>
               </div>
             ))}
              <div className="flex items-center justify-between py-4 px-4 border-b border-gray-50">
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="p-2 bg-gray-50 rounded-lg"><MapPin size={18} /></div>
-                  <span className="text-sm font-bold">Scan Location</span>
+                  <span className="text-sm font-bold tracking-wide">Scan Location</span>
                 </div>
-                <span className="font-black text-gray-900 text-sm">New York, USA</span>
+                <span className="font-black text-gray-900 text-sm tracking-wide">New York, USA</span>
               </div>
               <div className="flex items-center justify-between py-4 px-4 border-b border-gray-50">
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="p-2 bg-gray-50 rounded-lg"><Hash size={18} /></div>
-                  <span className="text-sm font-bold">Total Scans</span>
+                  <span className="text-sm font-bold tracking-wide">Total Scans</span>
                 </div>
-                <span className={`font-black text-sm px-2 py-1 rounded-md ${isSuspicious ? 'text-red-600 bg-red-50' : 'text-green-600 bg-green-50'}`}>
+                <span className={`font-black text-sm px-3 py-1 rounded-md uppercase tracking-wide ${isSuspicious ? 'text-red-600 bg-red-50' : 'text-green-600 bg-green-50'}`}>
                     {isSuspicious ? '14 (High)' : '1 (Valid)'}
                 </span>
               </div>
@@ -91,9 +91,9 @@ const AuthenticityScreen: React.FC = () => {
               <div className="bg-plum-primary/5 m-2 rounded-xl p-4 mt-2">
                  <div className="flex items-center gap-2 text-plum-primary mb-2">
                     <Building2 size={16} />
-                    <span className="text-xs font-black uppercase tracking-wider">Marketed By</span>
+                    <span className="text-xs font-black uppercase tracking-widest">Marketed By</span>
                  </div>
-                 <p className="text-xs font-bold text-gray-800 leading-relaxed pl-6">
+                 <p className="text-xs font-extrabold text-gray-800 leading-relaxed pl-6">
                     Pureplay Skin Sciences (India) Private Limited
                  </p>
               </div>
@@ -103,14 +103,14 @@ const AuthenticityScreen: React.FC = () => {
         {/* Toggle Simulation Button (For Demo) */}
         <button 
           onClick={() => setIsSuspicious(!isSuspicious)}
-          className="w-full py-4 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 text-xs font-bold flex items-center justify-center gap-2 hover:bg-gray-50 hover:border-gray-300 transition-all uppercase tracking-wide"
+          className="w-full py-4 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 text-xs font-extrabold flex items-center justify-center gap-2 hover:bg-gray-50 hover:border-gray-300 transition-all uppercase tracking-widest"
         >
           <RefreshCcw size={14} />
           Demo: Toggle Suspicious State
         </button>
 
         {isSuspicious && (
-            <button className="w-full mt-4 bg-red-600 text-white font-black py-4 rounded-2xl shadow-xl shadow-red-200 hover:bg-red-700 transition-all active:scale-95">
+            <button className="w-full mt-4 bg-red-600 text-white font-black py-4 rounded-2xl shadow-xl shadow-red-200 hover:bg-red-700 transition-all active:scale-95 uppercase tracking-wide">
                 Report an Issue
             </button>
         )}

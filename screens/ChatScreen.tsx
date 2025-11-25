@@ -55,19 +55,22 @@ const ChatScreen: React.FC = () => {
     <div className="flex flex-col h-screen bg-gray-50 pb-20"> {/* pb-20 to clear bottom nav if visible, though we might hide it */}
       {/* Header */}
       <div className="px-6 py-4 bg-white border-b border-gray-100 flex items-center shadow-sm z-10">
-        <button onClick={() => navigate(-1)} className="mr-4 text-gray-600">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="mr-4 text-gray-600 hover:bg-gray-50 p-1 rounded-full transition-all duration-200 active:scale-90"
+        >
           <ChevronLeft size={24} />
         </button>
         <div className="flex items-center gap-3">
             <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-plum-light border-2 border-white overflow-hidden">
+                <div className="w-10 h-10 rounded-full bg-white border-2 border-[#F3E5F5] overflow-hidden shadow-sm flex items-center justify-center">
                     <img 
-                        src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" 
-                        alt="Expert Sarah"
-                        className="w-full h-full object-cover"
+                        src="https://plumgoodness.com/cdn/shop/files/Plum_Logo_Purple_160x.png?v=1614333649" 
+                        alt="Plum Expert"
+                        className="w-8 h-auto object-contain"
                     />
                 </div>
-                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full animate-pulse"></div>
             </div>
             <div>
                 <h1 className="text-sm font-bold text-gray-800">Sarah (Plum Expert)</h1>
@@ -79,9 +82,9 @@ const ChatScreen: React.FC = () => {
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg) => (
-          <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+          <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-slide-up`}>
             <div 
-              className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm shadow-sm ${
+              className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm shadow-sm transition-all hover:shadow-md ${
                 msg.sender === 'user' 
                   ? 'bg-plum-primary text-white rounded-tr-none' 
                   : 'bg-white text-gray-700 rounded-tl-none border border-gray-100'
@@ -105,11 +108,11 @@ const ChatScreen: React.FC = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your question..."
-                className="flex-1 bg-gray-100 border-0 rounded-full px-5 py-3 text-sm focus:ring-2 focus:ring-plum-primary/50 outline-none"
+                className="flex-1 bg-gray-100 border-0 rounded-full px-5 py-3 text-sm focus:ring-2 focus:ring-plum-primary/50 outline-none transition-shadow focus:shadow-inner"
             />
             <button 
                 type="submit" 
-                className="w-12 h-12 rounded-full bg-plum-primary text-white flex items-center justify-center hover:bg-plum-deep transition-colors shadow-lg disabled:opacity-50"
+                className="w-12 h-12 rounded-full bg-plum-primary text-white flex items-center justify-center hover:bg-plum-deep transition-all duration-200 shadow-lg active:scale-90 disabled:opacity-50 disabled:scale-100"
                 disabled={!input.trim()}
             >
                 <Send size={18} />

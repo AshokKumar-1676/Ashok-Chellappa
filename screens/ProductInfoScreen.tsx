@@ -51,13 +51,13 @@ const ProductInfoScreen: React.FC = () => {
         {/* Scroll Indicator Dots */}
         <div className="absolute bottom-28 left-0 right-0 flex justify-center gap-1.5 z-10 pointer-events-none opacity-50">
              {bannerImages.map((_, i) => (
-                 <div key={i} className="w-1.5 h-1.5 rounded-full bg-white backdrop-blur-sm"></div>
+                 <div key={i} className="w-1.5 h-1.5 rounded-full bg-white backdrop-blur-sm transition-all duration-300"></div>
              ))}
         </div>
 
         {/* Text Overlay */}
         <div className="absolute bottom-6 left-6 text-white pointer-events-none z-10 pr-6">
-          <div className="bg-peach text-white text-[10px] font-black px-2.5 py-1 rounded-md inline-block mb-3 shadow-sm uppercase tracking-widest">Bestseller</div>
+          <div className="bg-peach text-white text-[10px] font-black px-2.5 py-1 rounded-md inline-block mb-3 shadow-sm uppercase tracking-widest animate-fade-in">Bestseller</div>
           <h1 className="text-3xl font-black leading-none drop-shadow-lg mb-1 tracking-tight">Coconut Squalane</h1>
           <h2 className="text-xl font-bold opacity-90 tracking-wide">Nutri-Shine Serum</h2>
         </div>
@@ -71,13 +71,13 @@ const ProductInfoScreen: React.FC = () => {
       <div className="px-6 py-4 flex gap-4 border-b border-gray-100 bg-white sticky top-0 z-20 shadow-sm">
         <button 
           onClick={() => setActiveTab('info')}
-          className={`flex-1 py-3.5 text-xs font-extrabold uppercase tracking-wide rounded-2xl transition-all ${activeTab === 'info' ? 'bg-plum-primary text-white shadow-lg shadow-plum-primary/20' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
+          className={`flex-1 py-3.5 text-xs font-extrabold uppercase tracking-wide rounded-2xl transition-all duration-300 active:scale-95 ${activeTab === 'info' ? 'bg-plum-primary text-white shadow-lg shadow-plum-primary/20 scale-[1.02]' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
         >
           Product Info
         </button>
         <button 
           onClick={() => setActiveTab('usage')}
-          className={`flex-1 py-3.5 text-xs font-extrabold uppercase tracking-wide rounded-2xl transition-all ${activeTab === 'usage' ? 'bg-plum-primary text-white shadow-lg shadow-plum-primary/20' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
+          className={`flex-1 py-3.5 text-xs font-extrabold uppercase tracking-wide rounded-2xl transition-all duration-300 active:scale-95 ${activeTab === 'usage' ? 'bg-plum-primary text-white shadow-lg shadow-plum-primary/20 scale-[1.02]' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'}`}
         >
           How to Use
         </button>
@@ -93,8 +93,8 @@ const ProductInfoScreen: React.FC = () => {
                 { label: 'Glossy', icon: Sparkles },
                 { label: 'Vegan', icon: Heart },
               ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)]">
-                  <div className="text-plum-primary mb-2"><item.icon size={24} strokeWidth={2} /></div>
+                <div key={idx} className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] transition-all duration-300 hover:scale-[1.05] hover:shadow-md hover:border-plum-primary/10">
+                  <div className="text-plum-primary mb-2 transition-transform duration-300 hover:rotate-12"><item.icon size={24} strokeWidth={2} /></div>
                   <span className="text-xs font-extrabold text-gray-800 uppercase tracking-wide">{item.label}</span>
                 </div>
               ))}
@@ -115,9 +115,9 @@ const ProductInfoScreen: React.FC = () => {
               </h3>
               <div className="space-y-4">
                 {ingredientsData.map((ing, idx) => (
-                  <div key={idx} className="bg-white p-4 rounded-[20px] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex gap-4 items-start">
+                  <div key={idx} className="bg-white p-4 rounded-[20px] border border-gray-100 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex gap-4 items-start transition-all duration-300 hover:scale-[1.01] hover:shadow-md">
                     <div className="w-16 h-16 shrink-0 rounded-2xl overflow-hidden bg-gray-100 shadow-inner">
-                        <img src={ing.image} alt={ing.name} className="w-full h-full object-cover" />
+                        <img src={ing.image} alt={ing.name} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
                     </div>
                     <div>
                         <h4 className="font-black text-plum-deep text-sm mb-1 uppercase tracking-wide">{ing.name}</h4>
@@ -148,12 +148,12 @@ const ProductInfoScreen: React.FC = () => {
         ) : (
           <div className="animate-fade-in space-y-8">
             {/* Video Placeholder */}
-            <div className="w-full aspect-video bg-gray-900 rounded-[24px] flex flex-col items-center justify-center text-white relative overflow-hidden group cursor-pointer shadow-xl mb-6">
-               <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=600&auto=format&fit=crop" className="absolute inset-0 opacity-60 object-cover w-full h-full transition-opacity group-hover:opacity-40" alt="Video thumb" />
-               <div className="relative z-10 w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform">
+            <div className="w-full aspect-video bg-gray-900 rounded-[24px] flex flex-col items-center justify-center text-white relative overflow-hidden group cursor-pointer shadow-xl mb-6 hover:shadow-2xl transition-all duration-300">
+               <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=600&auto=format&fit=crop" className="absolute inset-0 opacity-60 object-cover w-full h-full transition-all duration-700 group-hover:opacity-40 group-hover:scale-105" alt="Video thumb" />
+               <div className="relative z-10 w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 transition-transform duration-300">
                    <PlayCircle size={32} className="fill-white" />
                </div>
-               <span className="relative z-10 text-xs mt-3 font-black uppercase tracking-widest">Watch Tutorial</span>
+               <span className="relative z-10 text-xs mt-3 font-black uppercase tracking-widest opacity-80 group-hover:opacity-100 transition-opacity">Watch Tutorial</span>
             </div>
 
             {/* Horizontal Scroll Steps */}
@@ -186,9 +186,9 @@ const ProductInfoScreen: React.FC = () => {
                     img: 'https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=200&auto=format&fit=crop'
                   },
                 ].map((step, idx) => (
-                  <div key={idx} className="snap-center shrink-0 w-52 bg-white rounded-[20px] shadow-lg shadow-gray-100 border border-gray-100 overflow-hidden flex flex-col">
-                    <div className="h-36 bg-gray-100 relative">
-                      <img src={step.img} alt={step.title} className="w-full h-full object-cover" />
+                  <div key={idx} className="snap-center shrink-0 w-52 bg-white rounded-[20px] shadow-lg shadow-gray-100 border border-gray-100 overflow-hidden flex flex-col transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <div className="h-36 bg-gray-100 relative overflow-hidden">
+                      <img src={step.img} alt={step.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-110" />
                       <div className="absolute top-3 left-3 w-6 h-6 rounded-full bg-plum-primary text-white flex items-center justify-center text-[10px] font-black shadow-md border-2 border-white">
                           {idx + 1}
                       </div>

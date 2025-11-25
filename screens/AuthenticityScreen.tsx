@@ -12,7 +12,10 @@ const AuthenticityScreen: React.FC = () => {
       {/* Header */}
       <div className="px-6 pt-8 pb-6 bg-white sticky top-0 z-10">
         <div className="flex items-center mb-4">
-            <button onClick={() => navigate(-1)} className="mr-3 text-gray-500 hover:text-plum-primary">
+            <button 
+              onClick={() => navigate(-1)} 
+              className="mr-3 text-gray-500 hover:text-plum-primary p-1 rounded-full hover:bg-gray-50 transition-all duration-200 active:scale-90"
+            >
                 <ChevronLeft size={24} />
             </button>
             <h1 className="text-2xl font-black text-gray-900 tracking-tight">Authenticity Check</h1>
@@ -22,7 +25,7 @@ const AuthenticityScreen: React.FC = () => {
 
       <div className="px-6 mb-6">
         {/* Status Card */}
-        <div className={`rounded-[32px] p-8 shadow-xl shadow-gray-100 mb-8 text-center relative overflow-hidden transition-all duration-500 border ${isSuspicious ? 'bg-red-50 border-red-100' : 'bg-green-50 border-green-100'}`}>
+        <div className={`rounded-[32px] p-8 shadow-xl shadow-gray-100 mb-8 text-center relative overflow-hidden transition-all duration-500 transform hover:scale-[1.02] hover:shadow-2xl border ${isSuspicious ? 'bg-red-50 border-red-100' : 'bg-green-50 border-green-100'}`}>
           
           {/* Suspicious Mode Background Pattern (Diagonal Warning Stripes) */}
           {isSuspicious && (
@@ -62,7 +65,7 @@ const AuthenticityScreen: React.FC = () => {
           </div>
           <div className="p-2">
             {PRODUCT_DETAILS.map((detail, index) => (
-              <div key={index} className="flex items-center justify-between py-4 px-4 border-b border-gray-50 last:border-0">
+              <div key={index} className="flex items-center justify-between py-4 px-4 border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors duration-200">
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="p-2 bg-gray-50 rounded-lg"><detail.icon size={18} /></div>
                   <span className="text-sm font-bold tracking-wide">{detail.label}</span>
@@ -70,14 +73,14 @@ const AuthenticityScreen: React.FC = () => {
                 <span className="font-black text-gray-900 text-sm tracking-wide">{detail.value}</span>
               </div>
             ))}
-             <div className="flex items-center justify-between py-4 px-4 border-b border-gray-50">
+             <div className="flex items-center justify-between py-4 px-4 border-b border-gray-50 hover:bg-gray-50 transition-colors duration-200">
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="p-2 bg-gray-50 rounded-lg"><MapPin size={18} /></div>
                   <span className="text-sm font-bold tracking-wide">Scan Location</span>
                 </div>
                 <span className="font-black text-gray-900 text-sm tracking-wide">New York, USA</span>
               </div>
-              <div className="flex items-center justify-between py-4 px-4 border-b border-gray-50">
+              <div className="flex items-center justify-between py-4 px-4 border-b border-gray-50 hover:bg-gray-50 transition-colors duration-200">
                 <div className="flex items-center gap-3 text-gray-500">
                   <div className="p-2 bg-gray-50 rounded-lg"><Hash size={18} /></div>
                   <span className="text-sm font-bold tracking-wide">Total Scans</span>
@@ -103,7 +106,7 @@ const AuthenticityScreen: React.FC = () => {
         {/* Toggle Simulation Button (For Demo) */}
         <button 
           onClick={() => setIsSuspicious(!isSuspicious)}
-          className="w-full py-4 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 text-xs font-extrabold flex items-center justify-center gap-2 hover:bg-gray-50 hover:border-gray-300 transition-all uppercase tracking-widest"
+          className="w-full py-4 rounded-xl border-2 border-dashed border-gray-200 text-gray-400 text-xs font-extrabold flex items-center justify-center gap-2 hover:bg-gray-50 hover:border-gray-300 transition-all active:scale-[0.98] uppercase tracking-widest"
         >
           <RefreshCcw size={14} />
           Demo: Toggle Suspicious State

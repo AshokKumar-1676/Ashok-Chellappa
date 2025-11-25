@@ -66,11 +66,11 @@ const ARScanScreen: React.FC = () => {
          <div className="flex justify-between items-center">
             <button 
                 onClick={() => navigate(-1)}
-                className="p-3 bg-black/40 backdrop-blur-md rounded-full hover:bg-black/60 transition-colors"
+                className="p-3 bg-black/40 backdrop-blur-md rounded-full hover:bg-black/60 transition-colors active:scale-95"
             >
                 <ChevronLeft size={24} />
             </button>
-            <div className="bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
+            <div className="bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 flex items-center gap-2 animate-pulse">
                 <Camera size={16} className="text-green-400" />
                 <span className="text-xs font-bold tracking-wide">AI Object Detect</span>
             </div>
@@ -95,33 +95,34 @@ const ARScanScreen: React.FC = () => {
                  // 3D Character / Content Overlay
                  <div className="flex flex-col items-center animate-fade-in">
                      <div className="relative mb-8">
-                        {/* Mascot Image - Simulating 3D */}
-                        <div className={`relative w-48 h-48 transition-transform duration-500 ${mascotAction === 'dance' ? 'animate-bounce' : mascotAction === 'wave' ? 'rotate-12' : 'animate-float'}`}>
-                             <img 
-                                src="https://cdn-icons-png.flaticon.com/512/4193/4193290.png" 
-                                alt="Coco Mascot" 
-                                className="w-full h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)]"
-                                style={{ filter: 'brightness(1.1) contrast(1.1)' }} 
-                            />
+                        {/* Mascot Image - Updated to Plum Logo/Avatar */}
+                        <div className={`relative w-48 h-48 flex items-center justify-center transition-transform duration-500 ${mascotAction === 'dance' ? 'animate-bounce' : mascotAction === 'wave' ? 'rotate-12' : 'animate-float'}`}>
+                             <div className="w-40 h-40 bg-white rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(106,27,154,0.6)] border-4 border-[#6A1B9A]">
+                                 <img 
+                                    src="https://plumgoodness.com/cdn/shop/files/Plum_Logo_Purple_160x.png?v=1614333649" 
+                                    alt="Plum Mascot" 
+                                    className="w-28 h-auto object-contain"
+                                />
+                             </div>
                         </div>
                         
                         {/* Speech Bubble */}
-                        <div className="absolute -top-16 right-[-40px] bg-white text-plum-deep p-4 rounded-2xl rounded-bl-none shadow-2xl animate-slide-up max-w-[180px] border-2 border-plum-primary transform rotate-2">
+                        <div className="absolute -top-16 right-[-40px] bg-white text-[#4A0072] p-4 rounded-2xl rounded-bl-none shadow-2xl animate-slide-up max-w-[180px] border-2 border-[#6A1B9A] transform rotate-2">
                             <p className="text-xs font-black leading-tight">{dialogue}</p>
                         </div>
                      </div>
 
                      {/* Interaction Buttons */}
                      <div className="flex gap-3 bg-black/30 backdrop-blur-md p-2 rounded-2xl border border-white/10">
-                        <button onClick={() => handleInteraction('wave')} className="flex flex-col items-center gap-1 p-2 min-w-[60px] rounded-xl hover:bg-white/10 transition-colors">
+                        <button onClick={() => handleInteraction('wave')} className="flex flex-col items-center gap-1 p-2 min-w-[60px] rounded-xl hover:bg-white/10 transition-colors active:scale-95">
                             <span className="text-xl">👋</span>
                             <span className="text-[10px] font-bold">Wave</span>
                         </button>
-                        <button onClick={() => handleInteraction('tip')} className="flex flex-col items-center gap-1 p-2 min-w-[60px] rounded-xl hover:bg-white/10 transition-colors">
+                        <button onClick={() => handleInteraction('tip')} className="flex flex-col items-center gap-1 p-2 min-w-[60px] rounded-xl hover:bg-white/10 transition-colors active:scale-95">
                             <span className="text-xl">💡</span>
                             <span className="text-[10px] font-bold">Tips</span>
                         </button>
-                         <button onClick={() => handleInteraction('dance')} className="flex flex-col items-center gap-1 p-2 min-w-[60px] rounded-xl hover:bg-white/10 transition-colors">
+                         <button onClick={() => handleInteraction('dance')} className="flex flex-col items-center gap-1 p-2 min-w-[60px] rounded-xl hover:bg-white/10 transition-colors active:scale-95">
                             <span className="text-xl">💃</span>
                             <span className="text-[10px] font-bold">Dance</span>
                         </button>
@@ -138,28 +139,28 @@ const ARScanScreen: React.FC = () => {
                         <div className="flex items-center gap-2 mb-1">
                              <span className="bg-green-100 text-green-700 text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-wide">Match Found</span>
                         </div>
-                        <h2 className="text-xl font-black text-plum-primary tracking-tight">Coconut Squalane</h2>
+                        <h2 className="text-xl font-black text-[#6A1B9A] tracking-tight">Coconut Squalane</h2>
                         <p className="text-xs text-gray-500 font-bold">75ml • Serum</p>
                     </div>
-                    <button onClick={() => { setDetected(false); setScanning(true); }} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
+                    <button onClick={() => { setDetected(false); setScanning(true); }} className="p-2 bg-gray-100 rounded-full hover:bg-gray-200 active:scale-90 transition-transform">
                         <X size={18} />
                     </button>
                  </div>
                  
                  <div className="flex gap-3 mb-5">
-                    <div className="flex-1 bg-plum-light/30 p-3 rounded-2xl border border-plum-light flex flex-col items-center text-center">
-                         <Sparkles size={20} className="text-plum-primary mb-2" />
+                    <div className="flex-1 bg-[#F3E5F5]/30 p-3 rounded-2xl border border-[#F3E5F5] flex flex-col items-center text-center">
+                         <Sparkles size={20} className="text-[#6A1B9A] mb-2" />
                          <p className="text-[10px] font-bold uppercase text-gray-500 mb-0.5">Top Benefit</p>
                          <p className="text-xs font-black">Instant Shine</p>
                     </div>
-                    <div className="flex-1 bg-peach/10 p-3 rounded-2xl border border-peach/20 flex flex-col items-center text-center">
-                         <MessageCircle size={20} className="text-peach mb-2" />
+                    <div className="flex-1 bg-[#FF8A80]/10 p-3 rounded-2xl border border-[#FF8A80]/20 flex flex-col items-center text-center">
+                         <MessageCircle size={20} className="text-[#FF8A80] mb-2" />
                          <p className="text-[10px] font-bold uppercase text-gray-500 mb-0.5">Reviews</p>
                          <p className="text-xs font-black">4.8/5 Stars</p>
                     </div>
                  </div>
 
-                 <button onClick={() => navigate('/info')} className="w-full bg-plum-primary text-white py-3.5 rounded-xl font-bold shadow-lg flex items-center justify-center gap-2 uppercase tracking-wide hover:bg-plum-deep transition-colors">
+                 <button onClick={() => navigate('/info')} className="w-full bg-[#6A1B9A] text-white py-3.5 rounded-xl font-bold shadow-lg flex items-center justify-center gap-2 uppercase tracking-wide hover:bg-[#4A0072] transition-colors active:scale-95">
                     View Full Details <ArrowRight size={16} strokeWidth={3} />
                  </button>
              </div>

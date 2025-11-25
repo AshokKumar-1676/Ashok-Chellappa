@@ -56,7 +56,7 @@ const RewardsScreen: React.FC = () => {
                <button 
                   type="submit"
                   disabled={mobileNumber.length !== 10}
-                  className="w-full bg-plum-primary text-white font-bold py-4 rounded-xl shadow-lg hover:bg-plum-deep hover:shadow-xl transition-all disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2 transform active:scale-95"
+                  className="w-full bg-plum-primary text-white font-bold py-4 rounded-xl shadow-lg hover:bg-plum-deep hover:shadow-xl transition-all disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2 transform active:scale-95 duration-200"
                >
                  Get OTP <ArrowRight size={18} />
                </button>
@@ -70,9 +70,9 @@ const RewardsScreen: React.FC = () => {
                     {[0, 1, 2, 3].map((i) => (
                       <div 
                         key={i} 
-                        className={`w-14 h-16 bg-gray-50 border-2 rounded-xl flex items-center justify-center text-2xl font-bold transition-all shadow-sm ${
+                        className={`w-14 h-16 bg-gray-50 border-2 rounded-xl flex items-center justify-center text-2xl font-bold transition-all duration-200 shadow-sm ${
                             otp.length === i 
-                                ? 'border-plum-primary ring-4 ring-plum-primary/10 text-plum-primary scale-105' 
+                                ? 'border-plum-primary ring-4 ring-plum-primary/10 text-plum-primary scale-110' 
                                 : otp.length > i 
                                     ? 'border-plum-primary bg-plum-light/30 text-gray-800' 
                                     : 'border-gray-200 text-gray-300'
@@ -100,7 +100,7 @@ const RewardsScreen: React.FC = () => {
                <button 
                   type="submit"
                   disabled={otp.length !== 4}
-                  className="w-full bg-plum-primary text-white font-bold py-4 rounded-xl shadow-lg hover:bg-plum-deep hover:shadow-xl transition-all disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2 transform active:scale-95"
+                  className="w-full bg-plum-primary text-white font-bold py-4 rounded-xl shadow-lg hover:bg-plum-deep hover:shadow-xl transition-all disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2 transform active:scale-95 duration-200"
                >
                  <Check size={20} /> Verify & Login
                </button>
@@ -111,7 +111,7 @@ const RewardsScreen: React.FC = () => {
                       setOtp('');
                       setAuthStep('PHONE');
                   }}
-                  className="text-xs text-gray-500 font-bold hover:text-plum-primary transition-colors py-2"
+                  className="text-xs text-gray-500 font-bold hover:text-plum-primary transition-colors py-2 active:scale-95"
                 >
                   Change Number?
                 </button>
@@ -131,7 +131,7 @@ const RewardsScreen: React.FC = () => {
   return (
     <div className="flex flex-col min-h-full animate-slide-up pb-24">
       {/* Header Card */}
-      <div className="bg-gradient-to-br from-plum-deep to-plum-primary pt-10 pb-16 px-6 rounded-b-[40px] shadow-xl text-white relative overflow-hidden">
+      <div className="bg-gradient-to-br from-plum-deep to-plum-primary pt-10 pb-16 px-6 rounded-b-[40px] shadow-xl text-white relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
         {/* Background Patterns & Texture */}
         <div className="absolute inset-0 opacity-20" 
              style={{ 
@@ -143,7 +143,7 @@ const RewardsScreen: React.FC = () => {
         <div className="absolute top-0 left-0 w-full h-full opacity-10" 
              style={{ backgroundImage: 'radial-gradient(circle, white 2px, transparent 2.5px)', backgroundSize: '24px 24px' }}>
         </div>
-        <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute -left-10 bottom-0 w-32 h-32 bg-peach/20 rounded-full blur-3xl"></div>
         
         <div className="relative z-10">
@@ -154,14 +154,14 @@ const RewardsScreen: React.FC = () => {
                 </div>
                 <button 
                     onClick={() => setAuthStep('PHONE')}
-                    className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors backdrop-blur-sm"
+                    className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-200 active:scale-90 backdrop-blur-sm"
                 >
                     <LogOut size={16} />
                 </button>
             </div>
             
-            <div className="flex flex-col items-center justify-center mt-2">
-                <div className="relative">
+            <div className="flex flex-col items-center justify-center mt-2 group">
+                <div className="relative transition-transform duration-300 group-hover:scale-110">
                     <div className="text-6xl font-extrabold text-white drop-shadow-lg tracking-tight">30</div>
                     <Star className="absolute -top-2 -right-6 text-yellow-300 fill-current animate-pulse-slow" size={24} />
                 </div>
@@ -174,13 +174,13 @@ const RewardsScreen: React.FC = () => {
 
       <div className="px-6 -mt-10 relative z-20 space-y-6">
          {/* Membership Progress Card */}
-         <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-50">
+         <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-50 transition-transform duration-300 hover:-translate-y-1">
             <div className="flex justify-between text-xs font-bold text-gray-500 mb-3">
                 <span className="text-plum-primary">Bronze Member</span>
                 <span>Silver Member</span>
             </div>
             <div className="w-full bg-gray-100 rounded-full h-3 mb-4 overflow-hidden shadow-inner">
-                <div className="bg-gradient-to-r from-peach to-plum-primary h-full rounded-full" style={{ width: '40%' }}></div>
+                <div className="bg-gradient-to-r from-peach to-plum-primary h-full rounded-full transition-all duration-1000 ease-out" style={{ width: '40%' }}></div>
             </div>
             <p className="text-xs text-center text-gray-500 bg-gray-50 py-2 rounded-lg border border-gray-100">
                 You are <span className="text-plum-primary font-bold">70 points</span> away from your next freebie!
@@ -189,11 +189,11 @@ const RewardsScreen: React.FC = () => {
 
          {/* Actions Grid */}
          <div className="grid grid-cols-2 gap-3">
-             <button className="bg-plum-primary text-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center gap-2 hover:bg-plum-deep transition-colors">
+             <button className="bg-plum-primary text-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center gap-2 hover:bg-plum-deep hover:shadow-lg transition-all duration-200 active:scale-95 hover:-translate-y-0.5">
                  <Gift size={24} className="mb-1" />
                  <span className="text-xs font-bold">Redeem Now</span>
              </button>
-             <button className="bg-white border border-gray-100 text-gray-700 p-4 rounded-xl shadow-sm flex flex-col items-center justify-center gap-2 hover:bg-gray-50 transition-colors">
+             <button className="bg-white border border-gray-100 text-gray-700 p-4 rounded-xl shadow-sm flex flex-col items-center justify-center gap-2 hover:bg-gray-50 hover:shadow-md transition-all duration-200 active:scale-95 hover:-translate-y-0.5">
                  <Award size={24} className="mb-1 text-peach" />
                  <span className="text-xs font-bold">Badges</span>
              </button>
@@ -209,9 +209,9 @@ const RewardsScreen: React.FC = () => {
                     { title: 'Verified Scan', pts: '+20', date: 'Just now', icon: Star, color: 'text-yellow-600 bg-yellow-100' },
                     { title: 'Returning Bonus', pts: '+10', date: 'Today, 10:30 AM', icon: Award, color: 'text-purple-600 bg-purple-100' },
                 ].map((item, idx) => (
-                    <div key={idx} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between hover:shadow-md transition-shadow">
+                    <div key={idx} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between hover:shadow-md transition-all duration-200 active:bg-gray-50 cursor-pointer">
                         <div className="flex items-center gap-4">
-                            <div className={`p-3 rounded-full ${item.color}`}>
+                            <div className={`p-3 rounded-full ${item.color} transition-transform group-hover:scale-110`}>
                                 <item.icon size={18} />
                             </div>
                             <div>
@@ -226,12 +226,12 @@ const RewardsScreen: React.FC = () => {
          </div>
 
          {/* Promo Banner */}
-         <div className="bg-gradient-to-r from-peach/20 to-plum-light/50 rounded-2xl p-5 flex items-center justify-between border border-peach/20">
+         <div className="bg-gradient-to-r from-peach/20 to-plum-light/50 rounded-2xl p-5 flex items-center justify-between border border-peach/20 transition-all duration-300 hover:shadow-md">
             <div>
                 <h4 className="font-bold text-gray-800 text-sm mb-1">Refer a friend</h4>
                 <p className="text-xs text-gray-600">Get 50 points for every referral!</p>
             </div>
-            <button className="bg-white text-peach border border-peach text-xs font-bold py-2 px-4 rounded-lg shadow-sm">
+            <button className="bg-white text-peach border border-peach text-xs font-bold py-2 px-4 rounded-lg shadow-sm active:scale-95 transition-transform">
                 Invite
             </button>
          </div>

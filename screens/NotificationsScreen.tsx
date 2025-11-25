@@ -39,7 +39,10 @@ const NotificationsScreen: React.FC = () => {
     <div className="flex flex-col min-h-full bg-white">
       {/* Header */}
       <div className="px-6 py-6 border-b border-gray-100 flex items-center sticky top-0 bg-white z-10">
-        <button onClick={() => navigate(-1)} className="mr-4 text-gray-600">
+        <button 
+          onClick={() => navigate(-1)} 
+          className="mr-4 text-gray-600 hover:bg-gray-50 p-1 rounded-full transition-all duration-200 active:scale-90"
+        >
           <ChevronLeft size={24} />
         </button>
         <h1 className="text-lg font-bold text-gray-800 flex items-center gap-2">
@@ -52,13 +55,13 @@ const NotificationsScreen: React.FC = () => {
           {notifications.map((notif) => (
             <div 
               key={notif.id} 
-              className={`p-4 rounded-2xl border flex gap-4 transition-all ${
+              className={`p-4 rounded-2xl border flex gap-4 transition-all duration-300 hover:shadow-md hover:scale-[1.01] active:scale-[0.99] cursor-pointer ${
                 notif.unread 
                   ? 'bg-plum-light/30 border-plum-primary/20' 
                   : 'bg-white border-gray-100'
               }`}
             >
-              <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${notif.color}`}>
+              <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 ${notif.color} transition-transform group-hover:scale-110`}>
                 <notif.icon size={20} />
               </div>
               <div className="flex-1">
@@ -73,7 +76,7 @@ const NotificationsScreen: React.FC = () => {
                 </p>
               </div>
               {notif.unread && (
-                <div className="w-2 h-2 rounded-full bg-plum-primary mt-1.5"></div>
+                <div className="w-2 h-2 rounded-full bg-plum-primary mt-1.5 animate-pulse"></div>
               )}
             </div>
           ))}

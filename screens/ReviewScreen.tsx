@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Star, ChevronLeft, Camera, Send } from 'lucide-react';
+import { Star, ChevronLeft, Camera, Send, ThumbsUp } from 'lucide-react';
 import { AppRoute } from '../types';
 
 const ReviewScreen: React.FC = () => {
@@ -15,6 +15,25 @@ const ReviewScreen: React.FC = () => {
       navigate(AppRoute.HOME);
     }, 2000);
   };
+
+  const reviews = [
+      {
+          name: "Ananya S.",
+          stars: 5,
+          title: "Magical Shine! ✨",
+          desc: "Absolutely love how this serum makes my hair feel. It's so light and smells heavenly!",
+          time: "2 days ago",
+          verified: true
+      },
+      {
+          name: "Riya M.",
+          stars: 4,
+          title: "Good for frizz",
+          desc: "Controls frizz really well in this humidity. Wish the bottle was bigger!",
+          time: "1 week ago",
+          verified: true
+      }
+  ];
 
   if (submitted) {
     return (
@@ -40,7 +59,7 @@ const ReviewScreen: React.FC = () => {
         <h1 className="text-lg font-bold text-gray-800">Write a Review</h1>
       </div>
 
-      <div className="px-6 py-6 flex-1 overflow-y-auto">
+      <div className="px-6 py-6 flex-1 overflow-y-auto pb-24">
         <div className="flex items-center gap-4 mb-8">
             <img 
               src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=150&auto=format&fit=crop" 
@@ -53,7 +72,7 @@ const ReviewScreen: React.FC = () => {
             </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-6 mb-12">
           {/* Star Rating */}
           <div className="flex flex-col items-center gap-2 mb-6">
             <div className="flex gap-2">
@@ -111,6 +130,41 @@ const ReviewScreen: React.FC = () => {
             Submit Review
           </button>
         </form>
+
+        {/* Customer Reviews Section */}
+        <div className="border-t border-gray-100 pt-8">
+            <h3 className="text-lg font-black text-gray-900 mb-6 flex items-center gap-2">
+                Customer Love <span className="text-red-500">❤️</span>
+            </h3>
+            <div className="space-y-4">
+                {reviews.map((review, idx) => (
+                    <div key={idx} className="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+                        <div className="flex justify-between items-start mb-2">
+                            <div className="flex items-center gap-2">
+                                <span className="font-bold text-sm text-gray-800">{review.name}</span>
+                                {review.verified && <span className="text-[10px] text-green-600 bg-green-100 px-1.5 py-0.5 rounded font-bold">Verified Buyer</span>}
+                            </div>
+                            <span className="text-[10px] text-gray-400 font-bold">{review.time}</span>
+                        </div>
+                        <div className="flex text-yellow-400 mb-2 gap-0.5">
+                            {[...Array(5)].map((_, i) => (
+                                <Star key={i} size={12} fill={i < review.stars ? "currentColor" : "none"} className={i < review.stars ? "" : "text-gray-300"} />
+                            ))}
+                        </div>
+                        <h4 className="font-bold text-xs text-gray-900 mb-1">{review.title}</h4>
+                        <p className="text-xs text-gray-600 leading-relaxed">{review.desc}</p>
+                        <div className="mt-3 flex gap-4 text-gray-400">
+                            <button className="flex items-center gap-1 text-[10px] font-bold hover:text-gray-600 transition-colors">
+                                <ThumbsUp size={12} /> Helpful
+                            </button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <button className="w-full text-center mt-6 text-plum-primary text-xs font-extrabold uppercase tracking-wide hover:underline">
+                View All 1,248 Reviews
+            </button>
+        </div>
       </div>
     </div>
   );

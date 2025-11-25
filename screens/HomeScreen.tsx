@@ -22,7 +22,8 @@ import {
   Navigation,
   Calendar,
   Scan,
-  ChevronDown
+  ChevronDown,
+  Mail
 } from 'lucide-react';
 import { AppRoute } from '../types';
 
@@ -84,8 +85,12 @@ const HomeScreen: React.FC = () => {
              <img 
                src="https://plumgoodness.com/cdn/shop/files/Plum_Logo_Purple_160x.png?v=1614333649" 
                alt="Plum" 
-               className="h-10 w-auto mb-4 brightness-0 invert drop-shadow-md"
+               className="h-8 w-auto mb-2 brightness-0 invert drop-shadow-md"
              />
+             <p className="text-[10px] text-white/80 font-bold uppercase tracking-wider mb-3 leading-tight max-w-[200px]">
+                Pureplay Skin Sciences (India) Pvt Ltd
+             </p>
+
              <h1 className="text-3xl font-black text-white leading-tight tracking-tight drop-shadow-sm">
                Hello, <span className="text-[#FF8A80]">Beautiful!</span>
              </h1>
@@ -135,11 +140,12 @@ const HomeScreen: React.FC = () => {
                       />
                   </div>
 
-                  {/* Verified Badge */}
-                  <div className="absolute bottom-4 right-2 z-30 bg-white rounded-full p-1.5 shadow-lg border border-gray-100 animate-bounce-subtle">
-                      <div className="bg-green-100 p-1.5 rounded-full">
-                          <CheckCircle size={16} className="text-green-600 fill-current" />
-                      </div>
+                  {/* 100% Authentic Badge */}
+                  <div className="absolute -bottom-3 inset-x-0 flex justify-center z-30">
+                     <div className="bg-green-100 text-green-700 px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg border-2 border-white animate-bounce-subtle">
+                         <ShieldCheck size={14} fill="currentColor" className="text-green-600" />
+                         <span className="text-[10px] font-black uppercase tracking-wide whitespace-nowrap">100% Authentic</span>
+                     </div>
                   </div>
              </div>
 
@@ -157,10 +163,26 @@ const HomeScreen: React.FC = () => {
 
         {/* Product Title Card - FULL WIDTH */}
         <div className="bg-white/90 backdrop-blur-md p-6 rounded-[32px] shadow-xl border border-white w-full transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
-             <h3 className="text-2xl font-black text-gray-900 leading-tight mb-2 tracking-tight">
+             <h3 className="text-2xl font-black text-gray-900 leading-tight mb-1 tracking-tight">
                Coconut Squalane<br/><span className="text-[#6A1B9A]">Nutri-Shine Serum</span>
              </h3>
-             <p className="text-xs text-gray-500 font-extrabold uppercase tracking-widest mb-5">75ml • Batch #PLM2023</p>
+             <p className="text-xs text-gray-500 font-extrabold uppercase tracking-widest mb-3">75ml • Batch #PLM2023</p>
+
+             {/* Ratings Review Summary */}
+             <div 
+               onClick={() => navigate(AppRoute.REVIEW)}
+               className="flex items-center justify-center gap-2 mb-5 cursor-pointer hover:opacity-80 transition-opacity"
+             >
+                <div className="flex text-yellow-400">
+                    <Star size={14} fill="currentColor" />
+                    <Star size={14} fill="currentColor" />
+                    <Star size={14} fill="currentColor" />
+                    <Star size={14} fill="currentColor" />
+                    <Star size={14} fill="currentColor" className="text-yellow-200" />
+                </div>
+                <span className="text-xs font-bold text-gray-800">4.8</span>
+                <span className="text-xs font-semibold text-gray-400 border-l border-gray-300 pl-2">(1.2k Reviews)</span>
+             </div>
 
              <div className="flex gap-2 justify-center w-full">
                   <a 
@@ -388,6 +410,16 @@ const HomeScreen: React.FC = () => {
             Pureplay Skin Sciences (India) Pvt Ltd
           </p>
           
+          <button 
+             onClick={() => navigate(AppRoute.CONTACT)}
+             className="flex items-center justify-center gap-2 mx-auto text-gray-500 hover:text-[#6A1B9A] transition-colors mb-8 group"
+          >
+             <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center shadow-sm group-hover:border-[#6A1B9A] group-hover:bg-[#F3E5F5]">
+                 <Mail size={14} />
+             </div>
+             <span className="text-xs font-extrabold uppercase tracking-wide">Contact Support</span>
+          </button>
+
           <div className="flex items-center justify-center gap-2 text-[10px] text-gray-400 opacity-60">
             <span className="font-bold uppercase tracking-wider">Tech Partner</span>
             <span className="w-1 h-1 rounded-full bg-gray-400"></span>
